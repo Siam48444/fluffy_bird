@@ -1,5 +1,7 @@
 const gameBoard = document.getElementById('gameBoard');
 
+const POLE_SPEED = 100;
+const windowWidth = window.innerWidth;
 
 
 
@@ -13,26 +15,24 @@ function startGame() {
 
 // Slides the poles to the left
 function poleSlider() {
-	const POLE_SPEED = 100;
-
 	setInterval(() => {
 		// Create a pole
 		const pole = document.createElement('div');
 		pole.className = 'pole';
 		pole.style.left = '100%'; // Start at the right
 
+		// Append the pole
 		gameBoard.append(pole);
 
 		// Move the pole left using CSS
 		setTimeout(() => {
-		    pole.style.transition = 'left 3s linear';
-		    pole.style.left = '-50px'; // Move off-screen
+		    pole.style.left = '0%'; // Move off-screen
 		}, 10);
 
 		// Remove pole after animation
-		setTimeout(() => {
-		    pole.remove();
-		}, 3000);
+		if (pole.getBoundingClientRect().right < windowWidth) {
+			console.log(pole.getBoundingClientRect().right);
+		}
 
-	}, POLE_SPEED);
+	}, 1111);
 }
