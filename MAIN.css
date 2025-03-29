@@ -1,3 +1,23 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    overflow-x: hidden;
+}
+
+
+
+
 @font-face {
     font-family: 'Inter';
     src: url('Inter_28pt-Regular.woff2') format('woff2');
@@ -55,24 +75,7 @@
 }
 
 
-*,
-*::after,
-*::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body,
-html {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    position: relative;
-    overflow-x: hidden;
-}
-
 
 :root {
-    
+    --poleWidth: 5em;
 }

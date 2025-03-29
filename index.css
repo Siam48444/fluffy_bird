@@ -1,0 +1,14 @@
+.gameBoard {
+	background-color: #ffffff;
+	min-height: 100vh;
+	min-height: 100dvh;
+	position: relative;
+}
+
+.pole {
+	height: 100%;
+	width: var(--poleWidth);
+	background-color: green;
+	position: absolute;
+	right: -101%;
+}
