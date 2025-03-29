@@ -1,0 +1,35 @@
+@font-face {
+    font-family: "Regular";
+}
+@font-face {
+    font-family: "Medium";
+}
+@font-face {
+    font-family: "Bold";
+}
+@font-face {
+    font-family: "Extrabold";
+}
+
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    overflow-x: hidden;
+}
+
+
+:root {
+    
+}
