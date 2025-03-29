@@ -15,12 +15,24 @@ function startGame() {
 function poleSlider() {
 	const POLE_SPEED = 100;
 
-	setTimeout(() => {
+	setInterval(() => {
 		// Create a pole
 		const pole = document.createElement('div');
 		pole.className = 'pole';
+		pole.style.left = '100%'; // Start at the right
 
-		// Append the poles
 		gameBoard.append(pole);
-	}, 5);
+
+		// Move the pole left using CSS
+		setTimeout(() => {
+		    pole.style.transition = 'left 3s linear';
+		    pole.style.left = '-50px'; // Move off-screen
+		}, 10);
+
+		// Remove pole after animation
+		setTimeout(() => {
+		    pole.remove();
+		}, 3000);
+
+	}, POLE_SPEED);
 }
