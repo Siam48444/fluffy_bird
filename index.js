@@ -27,15 +27,15 @@ function poleSlider() {
 		gameBoard.append(pole);
 
 		// Move the pole left using CSS
-		setTimeout(() => {
-			pole.style.transition = `left ${POLE_SPEED}ms linear`;
-		    pole.style.left = '-50px'; // Move off-screen
-		}, 10);
+		requestAnimationFrame(() => {
+            pole.style.transition = `left ${POLE_SPEED}ms linear`;
+            pole.style.left = '0px'; // Move off-screen
+        });
 
-		// Remove pole after animation
-		if (pole.getBoundingClientRect().right < windowWidth / 2) {
-			pole.remove();
-		}
+		// Remove the pole after it exits the screen
+        setTimeout(() => {
+            pole.remove();
+        }, POLE_SPEED - 500);
 
 	}, POLE_INTERVAL_SPEED);
 }
