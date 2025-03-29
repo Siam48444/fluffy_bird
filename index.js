@@ -19,5 +19,8 @@ function poleSlider() {
 		// Create a pole
 		const pole = document.createElement('div');
 		pole.className = 'pole';
+
+		// Append the poles
+		gameBoard.append(pole);
 	}, 5);
 }
