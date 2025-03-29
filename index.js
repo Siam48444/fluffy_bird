@@ -20,6 +20,8 @@ function poleSlider() {
 	setInterval(() => {
 		// Create a pole
 		const pole = document.createElement('div');
+
+        pole.style.transition = `left ${POLE_SPEED}ms linear`;
 		pole.className = 'pole';
 		pole.style.left = '101%'; // Start at the right 
 
@@ -28,14 +30,13 @@ function poleSlider() {
 
 		// Move the pole left using CSS
 		requestAnimationFrame(() => {
-            pole.style.transition = `left ${POLE_SPEED}ms linear`;
-            pole.style.left = '0px'; // Move off-screen
+            pole.style.left = '-20%'; // Move off-screen
         });
 
 		// Remove the pole after it exits the screen
         setTimeout(() => {
             pole.remove();
-        }, POLE_SPEED - 500);
+        }, POLE_SPEED * (1 + 0.5));
 
 	}, POLE_INTERVAL_SPEED);
 }
