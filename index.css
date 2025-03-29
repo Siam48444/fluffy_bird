@@ -10,5 +10,5 @@
 	width: var(--poleWidth);
 	background-color: green;
 	position: absolute;
-	right: -101%;
+	right: 0%;
 }
