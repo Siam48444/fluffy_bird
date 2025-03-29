@@ -10,6 +10,4 @@
 	width: var(--poleWidth);
 	background-color: green;
 	position: absolute;
-
-	transition: left 1000ms linear;
 }
