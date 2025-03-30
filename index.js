@@ -1,22 +1,21 @@
 // board
 let board;
 let context;
-
 const BOARD = {
 	width : window.innerWidth,
 	height : window.innerHeight,
 }
 
-
 // bird
 let birdImage;
-
 const BIRD = {
 	width : 50,
 	height : 50,
 	x : BOARD.width / 5,
 	y : BOARD.height / 2.2,
 }
+
+// physics
 
 
 
@@ -41,7 +40,8 @@ window.onload = () => {
 
 
 function update() {
-
+	context.clearRect(0, 0, board.width, board.height);
+	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
 
 	requestAnimationFrame(update);
 }
