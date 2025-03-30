@@ -79,7 +79,7 @@ function update() {
 
 
 function placePipes() {
-	let randomPipeY = PIPE.height - (Math.random() * PIPE.height / 2) - (PIPE.height * 0.5);
+	let randomPipeY = (Math.random() * PIPE.height / 2.2);
 
 	const topPipe = {
 		width : PIPE.width,
