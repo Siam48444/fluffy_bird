@@ -29,14 +29,14 @@ function poleSlider() {
 		gameBoard.append(pole);
 
 		// Move the pole left using CSS
-		requestAnimationFrame(() => {
+		setTimeout(() => {
             pole.style.left = '-20%'; // Move off-screen
-        });
+        }, 1);
 
 		// Remove the pole after it exits the screen
         setTimeout(() => {
             pole.remove();
-        }, POLE_SPEED * (1 + 0.5));
+        }, POLE_SPEED * 1.5);
 
 	}, POLE_INTERVAL_SPEED);
 }
