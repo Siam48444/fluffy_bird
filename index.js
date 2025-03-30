@@ -5,7 +5,7 @@ const BOARD = {
 }
 
 const board = document.getElementById('board');
-const context = board.getContext('2d'); // used for 2d drawing on the board
+const context = board.getContext('2d'); // used for 2 dimensional drawing on the board
 
 board.width = BOARD.width; // set the game board dimensions
 board.height = BOARD.height;
@@ -47,18 +47,18 @@ const birdVelocity = -2;
 
 
 
-
 window.addEventListener('DOMContentLoaded', () => {
 	// load the images
 	birdImage.src = './assets/images/bird.png';
 	topPipeImage.src = './assets/images/topPipe.png'; 
 	bottomPipeImage.src = './assets/images/bottomPipe.png';
 
-	setInterval(placePipes, pipeInterval);
 	requestAnimationFrame(update);
+	setInterval(placePipes, pipeInterval);
 });
 
 
+// update the frames
 function update() {
 	context.clearRect(0, 0, board.width, board.height); // Clear previous frame
 
@@ -76,6 +76,7 @@ function update() {
 }
 
 
+// place the pipes
 function placePipes() {
 	let randomPipeY = (Math.random() * TOP_PIPE.height / 2.2);
 
