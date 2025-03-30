@@ -1,25 +1,25 @@
 // board
 let board, context;
-const board = {
+const BOARD = {
 	width : window.innerWidth,
 	height : window.innerHeight,
 }
 
 // bird
 let birdImage;
-const bird = {
+const BIRD = {
 	width : 50,
 	height : 50,
-	x : board.width / 5,
-	y : board.height / 2.2,
+	x : BOARD.width / 5,
+	y : BOARD.height / 2 - this.height,
 }
 
 // pipes
 let topPipeImage, bottomPipeImage;
-const pipe = {
+const PIPE = {
 	width : 50,
-	height : board.height / 2,
-	x : board.width,
+	height : BOARD.height / 1,
+	x : BOARD.width,
 	y : 0, 
 }
 
@@ -33,19 +33,13 @@ window.onload = () => {
 	context = board.getContext('2d'); // used for 2d drawing on the board
 
 	// set the game board dimensions
-	board.width = board.width;
-	board.height = board.height;
+	board.width = BOARD.width;
+	board.height = BOARD.height;
 
 	// draw the fluffy bird
 	birdImage = new Image();
 	birdImage.src = './assets/images/bird.png';
-	context.drawImage(birdImage, bird.x, bird.y, bird.width, bird.height);
-
-	// draw pipes
-	// topPipeImage = new Image();
-	// topPipeImage.src = './assets/images/topPipe.png';
-	context.fillStyle = 'red';
-	context.fillRect(pipe.x, pipe.y, pipe.width, pipe.height);
+	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
 
 	setInterval(placePipes, 2000);
 	requestAnimationFrame(update);
@@ -55,16 +49,22 @@ window.onload = () => {
 function update() {
 	context.clearRect(0, 0, board.width, board.height); // Clear previous frame
 
-	bird.y += gravity; // Move bird down
-	context.drawImage(birdImage, bird.x, bird.y, bird.width, bird.height);
-
-	pipe.x -= gravity;
-	context.fillRect(pipe.x, pipe.y, pipe.width, pipe.height);
+	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
 
 	requestAnimationFrame(update); // loop the animation
 }
 
 
 function placePipes() {
+	// draw top pipe
+	// topPipeImage = new Image();
+	// topPipeImage.src = './assets/images/topPipe.png';
+	context.fillStyle = 'red';
+	context.fillRect(PIPE.x, PIPE.y, PIPE.width, PIPE.height);
 
+	// draw bottom pipe
+	// bottomPipeImage = new Image();
+	// bottomPipeImage.src = './assets/images/bottomPipe.png';
+	context.fillStyle = 'red';
+	context.fillRect(PIPE.x, PIPE.y, PIPE.width, PIPE.height);
 }
