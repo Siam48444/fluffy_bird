@@ -36,9 +36,9 @@ const bottomPipeImage = new Image(); // bottom pipe images
 
 
 // physics and others
-const gravity = 2;
-const birdVelocity = -2;
-const pipeVelocity = -(BOARD.width / 500);
+const gravity = 2; // gravity of the falling bird
+const birdVelocity = -2; // velocity of the jumping bird
+const pipeVelocity = -(BOARD.width / 500); // velocity of the moving pipes
 const pipeArray = []; // used to add more pipes in the game
 const pipeInterval = 1000; // time between each pipe generation (in milliseconds)
 const pipeSpacing = BIRD.height * 5; // space between the pipes
