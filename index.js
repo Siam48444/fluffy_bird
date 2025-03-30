@@ -13,7 +13,9 @@ const BOARD = {
 
 
 // bird
-let birdImage;
+const birdImage = new Image(); // draw the fluffy bird
+birdImage.src = './assets/images/bird.png';
+context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
 
 const BIRD = {
 	width : 50,
@@ -24,10 +26,17 @@ const BIRD = {
 
 
 // pipes
-let topPipeImage, bottomPipeImage;
 let pipeArray = [];
 const pipeInterval = 1500; // in milliseconds
 const pipeSpacing = BIRD.height * 5;
+
+// draw the top pipe
+const topPipeImage = new Image();
+topPipeImage.src = './assets/images/topPipe.png';
+
+// draw the bottom pipe
+const bottomPipeImage = new Image();
+bottomPipeImage.src = './assets/images/bottomPipe.png';
 
 const TOP_PIPE = {
 	width : BIRD.width * 2,
@@ -49,18 +58,9 @@ window.onload = () => {
 
 	
 
-	// draw the fluffy bird
-	birdImage = new Image();
-	birdImage.src = './assets/images/bird.png';
-	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
+	
 
-	// draw the top pipe
-	topPipeImage = new Image();
-	topPipeImage.src = './assets/images/topPipe.png';
-
-	// draw the bottom pipe
-	bottomPipeImage = new Image();
-	bottomPipeImage.src = './assets/images/bottomPipe.png';
+	
 
 	setInterval(placePipes, pipeInterval);
 	requestAnimationFrame(update);
