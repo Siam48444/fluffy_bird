@@ -100,6 +100,7 @@ function placePipes() {
 		height : TOP_PIPE.height,
 		x : TOP_PIPE.x,
 		y : TOP_PIPE.height + pipeSpacing, 
+		image : bottomPipeImage, 
 	}
 	pipeArray.push(bottomPipe);
 }
