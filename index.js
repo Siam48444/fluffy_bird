@@ -16,6 +16,7 @@ const BIRD = {
 }
 
 // physics
+const gravity = 4;
 
 
 
@@ -30,18 +31,18 @@ window.onload = () => {
 	// draw the fluffy bird
 	birdImage = new Image();
 	birdImage.src = './assets/images/bird.png';
-	
-	birdImage.onload = () => {
-		context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
-	}
+	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
 
 	requestAnimationFrame(update);
 }	
 
 
 function update() {
-	context.clearRect(0, 0, board.width, board.height);
+	context.clearRect(0, 0, board.width, board.height); // Clear previous frame
+
+	BIRD.y += gravity; // Move bird down
+
 	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
 
-	requestAnimationFrame(update);
+	requestAnimationFrame(update); // loop the animation
 }
