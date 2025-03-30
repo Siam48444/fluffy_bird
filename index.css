@@ -1,3 +1,5 @@
-#board {
+.board {
 	background-color: skyblue;
+	overflow: hidden;
+	display: block;
 }
