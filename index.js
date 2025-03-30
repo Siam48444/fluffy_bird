@@ -19,14 +19,13 @@ const BIRD = {
 // pipes
 let topPipeImage, bottomPipeImage;
 let pipeArray = [];
-const pipeInterval = 2000; // in milliseconds
+const pipeInterval = 500; // in milliseconds
 
 
 // physics
 const gravity = 2;
 const pipeVelocity = -3;
 const birdVelocity = -2;
-
 
 
 
@@ -68,17 +67,20 @@ function update() {
 		context.drawImage(pipe.image, pipe.x, pipe.y, pipe.width, pipe.height);
 	}
 
-	requestAnimationFrame(update); // loop the animation
+	// loop the animation
+	requestAnimationFrame(update); 
 }
 
 
 function placePipes() {
+	let randomPipeY = BOARD.height * Math.random();
+
 	let topPipe = {
 		image : topPipeImage, 
 		width : BIRD.width * 2,
 		height : BOARD.height / 1.7,
 		x : BOARD.width,
-		y : 0, 
+		y : -randomPipeY, 
 	}
 	pipeArray.push(topPipe);
 
