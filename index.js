@@ -28,6 +28,7 @@ window.onload = () => {
 
 	const birdImage = new Image();
 	birdImage.src = './assets/images/bird.png';
+	
 	birdImage.onload = () => {
 		context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
 	}
