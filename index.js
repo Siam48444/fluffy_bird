@@ -1,6 +1,7 @@
 // board
 let board;
 let context;
+
 const BOARD = {
 	width : window.innerWidth,
 	height : window.innerHeight,
@@ -8,11 +9,23 @@ const BOARD = {
 
 // bird
 let birdImage;
+
 const BIRD = {
 	width : 50,
 	height : 50,
 	x : BOARD.width / 5,
 	y : BOARD.height / 2.2,
+}
+
+// pipes
+let topPipeImage;
+let bottomPipeImage;
+
+const PIPE = {
+	width : 50,
+	height : BOARD.height / 2,
+	x : BOARD.width,
+	y : 0, 
 }
 
 // physics
@@ -33,6 +46,11 @@ window.onload = () => {
 	birdImage.src = './assets/images/bird.png';
 	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
 
+	// draw pipes
+	topPipeImage = new Image();
+	topPipeImage.src = './assets/images/topPipe.png';
+
+	setInterval(placePipes, 2000);
 	requestAnimationFrame(update);
 }	
 
