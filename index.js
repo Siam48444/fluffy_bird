@@ -5,6 +5,7 @@ const BOARD = {
 	height : window.innerHeight,
 }
 
+
 // bird
 let birdImage;
 const BIRD = {
@@ -14,17 +15,22 @@ const BIRD = {
 	y : BOARD.height / 2.2,
 }
 
+
 // pipes
 let topPipeImage, bottomPipeImage;
 const PIPE = {
 	width : BIRD.width * 1.5,
 	height : BOARD.height / 1,
-	x : BOARD.width,
+	x : BOARD.width - 50,
 	y : 0, 
 }
 
+
 // physics
-const gravity = 4;
+const gravity = 2;
+const pipeVelocity = -2;
+const birdVelocity = -2;
+
 
 
 
@@ -62,7 +68,11 @@ window.onload = () => {
 function update() {
 	context.clearRect(0, 0, board.width, board.height); // Clear previous frame
 
-	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
+	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); //draw bird
+	// context.drawImage(topPipeImage, PIPE.x, PIPE.y, PIPE.width, PIPE.height); //draw top pipe
+
+	context.fillStyle = 'red';
+	context.fillRect(PIPE.x, PIPE.y, PIPE.width, PIPE.height);
 
 	requestAnimationFrame(update); // loop the animation
 }
