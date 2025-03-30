@@ -20,20 +20,20 @@ const BIRD = {
 }
 
 const birdImage = new Image(); // fluffy bird image
-context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
+context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); // draw the bird
 
 
 // pipes
 const TOP_PIPE = {
 	width : BIRD.width * 2,
 	height : BOARD.height / 1.7,
-	x : BOARD.width,
+	x : BOARD.width + 1,
 	y : 0, 
-}
+} // the bottom pipes are generated based on this object
 
-let pipeArray = [];
-const pipeInterval = 1500; // in milliseconds
-const pipeSpacing = BIRD.height * 5; // space between the pipes
+let pipeArray = []; // used to add more pipes in the game
+let pipeInterval = 1500; // in milliseconds
+let pipeSpacing = BIRD.height * 5; // space between the pipes
 
 const topPipeImage = new Image(); // top pipe images
 const bottomPipeImage = new Image(); // bottom pipe images
