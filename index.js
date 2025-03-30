@@ -23,6 +23,12 @@ window.onload = () => {
 	board.height = BOARD.height;
 
 	// draw the fluffy bird
-	context.fillStyle = 'green';
-	context.fillRect(BIRD.x, BIRD.y, BIRD.width, BIRD.height);
+	// context.fillStyle = 'red';
+	// context.fillRect(BIRD.x, BIRD.y, BIRD.width, BIRD.height);
+
+	const birdImage = new Image();
+	birdImage.src = './assets/images/bird.png';
+	birdImage.onload = () => {
+		context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
+	}
 }
