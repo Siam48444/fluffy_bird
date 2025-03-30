@@ -1,5 +1,6 @@
 // board
 let board, context;
+
 const BOARD = {
 	width : window.innerWidth,
 	height : window.innerHeight,
@@ -8,6 +9,7 @@ const BOARD = {
 
 // bird
 let birdImage;
+
 const BIRD = {
 	width : 50,
 	height : 50,
@@ -20,7 +22,9 @@ const BIRD = {
 let topPipeImage, bottomPipeImage;
 let pipeArray = [];
 const pipeInterval = 1500; // in milliseconds
-const PIPE = {
+const pipeSpacing = BOARD.height / 4;
+
+const TOP_PIPE = {
 	width : BIRD.width * 2,
 	height : BOARD.height / 1.7,
 	x : BOARD.width,
@@ -79,21 +83,23 @@ function update() {
 
 
 function placePipes() {
-	let randomPipeY = (Math.random() * PIPE.height / 2.2);
+	let randomPipeY = (Math.random() * TOP_PIPE.height / 2.2);
 
-	const topPipe = {
-		width : PIPE.width,
-		height : PIPE.height,
-		x : PIPE.x,
+	let topPipe = {
+		width : TOP_PIPE.width,
+		height : TOP_PIPE.height,
+		x : TOP_PIPE.x,
 		y : -randomPipeY, 
 		image : topPipeImage, 
 	}
 	pipeArray.push(topPipe);
 
-	// let bottomPipe = {
-	// 	width : TOP_PIPE.width,
-	// 	height : BOARD.height / 1.7,
-	// 	x : BOARD.width,
-	// 	y : BOARD.height, 
-	// }
+
+	let bottomPipe = {
+		width : TOP_PIPE.width,
+		height : TOP_PIPE.height,
+		x : TOP_PIPE.x,
+		y : TOP_PIPE.height + pipeSpacing, 
+	}
+	pipeArray.push(bottomPipe);
 }
