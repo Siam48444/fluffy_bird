@@ -19,7 +19,7 @@ const BIRD = {
 // pipes
 let topPipeImage, bottomPipeImage;
 let pipeArray = [];
-const pipeInterval = 500; // in milliseconds
+const pipeInterval = 1500; // in milliseconds
 const PIPE = {
 	width : BIRD.width * 2,
 	height : BOARD.height / 1.7,
@@ -79,11 +79,11 @@ function update() {
 
 
 function placePipes() {
-	let randomPipeY = PIPE.height * Math.random();
+	let randomPipeY = PIPE.height - (Math.random() * PIPE.height / 2) - (PIPE.height * 0.5);
 
 	const topPipe = {
 		width : PIPE.width,
-		height : PIPE.width,
+		height : PIPE.height,
 		x : PIPE.x,
 		y : -randomPipeY, 
 		image : topPipeImage, 
