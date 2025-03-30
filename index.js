@@ -20,6 +20,12 @@ const BIRD = {
 let topPipeImage, bottomPipeImage;
 let pipeArray = [];
 const pipeInterval = 500; // in milliseconds
+const PIPE = {
+	width : BIRD.width * 2,
+	height : BOARD.height / 1.7,
+	x : BOARD.width,
+	y : 0, 
+}
 
 
 // physics
@@ -73,14 +79,14 @@ function update() {
 
 
 function placePipes() {
-	let randomPipeY = BOARD.height * Math.random();
+	let randomPipeY = PIPE.height * Math.random();
 
-	let topPipe = {
-		image : topPipeImage, 
-		width : BIRD.width * 2,
-		height : BOARD.height / 1.7,
-		x : BOARD.width,
+	const topPipe = {
+		width : PIPE.width,
+		height : PIPE.width,
+		x : PIPE.x,
 		y : -randomPipeY, 
+		image : topPipeImage, 
 	}
 	pipeArray.push(topPipe);
 
