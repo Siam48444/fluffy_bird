@@ -21,7 +21,7 @@ let topPipeImage, bottomPipeImage;
 const PIPE = {
 	width : BIRD.width * 1.5,
 	height : BOARD.height / 1.7,
-	x : BOARD.width - 500,
+	x : BOARD.width,
 	y : 0, 
 }
 
