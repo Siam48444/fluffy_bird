@@ -18,6 +18,8 @@ const BIRD = {
 
 // pipes
 let topPipeImage, bottomPipeImage;
+let pipeArray = [];
+const pipeInterval = 2000; // in milliseconds
 
 
 // physics
@@ -41,16 +43,15 @@ window.onload = () => {
 	birdImage.src = './assets/images/bird.png';
 	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
 
-	// draw top pipe
+	// draw the top pipe
 	topPipeImage = new Image();
 	topPipeImage.src = './assets/images/topPipe.png';
 
-	// draw bottom pipe
+	// draw the bottom pipe
 	bottomPipeImage = new Image();
 	bottomPipeImage.src = './assets/images/bottomPipe.png';
 
-
-	setInterval(placePipes, 2000);
+	setInterval(placePipes, pipeInterval);
 	requestAnimationFrame(update);
 }	
 
@@ -62,28 +63,28 @@ function update() {
 	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); 
 
 	//draw pipes
-	TOP_PIPE.x += pipeVelocity;
-	BOTTOM_PIPE.x += pipeVelocity;
-
-	context.drawImage(topPipeImage, TOP_PIPE.x, TOP_PIPE.y, TOP_PIPE.width, TOP_PIPE.height); //draw top pipe
-	context.drawImage(bottomPipeImage, BOTTOM_PIPE.x, BOTTOM_PIPE.y, BOTTOM_PIPE.width, BOTTOM_PIPE.height); //draw bottom pipe
+	for (let pipe of pipeArray) {
+		context.drawImage();
+	}
 
 	requestAnimationFrame(update); // loop the animation
 }
 
 
 function placePipes() {
-	let TOP_PIPE = {
+	let topPipe = {
+		image : topPipeImage, 
 		width : BIRD.width * 2,
 		height : BOARD.height / 1.7,
 		x : BOARD.width,
 		y : 0, 
 	}
+	pipeArray.push(topPipe);
 
-	let BOTTOM_PIPE = {
-		width : TOP_PIPE.width,
-		height : BOARD.height / 1.7,
-		x : BOARD.width,
-		y : BOARD.height, 
-	}
+	// let bottomPipe = {
+	// 	width : TOP_PIPE.width,
+	// 	height : BOARD.height / 1.7,
+	// 	x : BOARD.width,
+	// 	y : BOARD.height, 
+	// }
 }
