@@ -1,9 +1,8 @@
-// the game board
+// board
 const board = document.getElementById('board');
 const context = board.getContext('2d'); // used for 2d drawing on the board
 
-// set the game board dimensions
-board.width = BOARD.width;
+board.width = BOARD.width; // set the game board dimensions
 board.height = BOARD.height;
 
 const BOARD = {
@@ -14,7 +13,6 @@ const BOARD = {
 
 // bird
 const birdImage = new Image(); // draw the fluffy bird
-birdImage.src = './assets/images/bird.png';
 context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
 
 const BIRD = {
@@ -28,10 +26,10 @@ const BIRD = {
 // pipes
 let pipeArray = [];
 const pipeInterval = 1500; // in milliseconds
-const pipeSpacing = BIRD.height * 5;
+const pipeSpacing = BIRD.height * 5; // space between the pipes
 
-const topPipeImage = new Image(); // pipe images
-const bottomPipeImage = new Image();
+const topPipeImage = new Image(); // top pipe images
+const bottomPipeImage = new Image(); // bottom pipe images
 
 const TOP_PIPE = {
 	width : BIRD.width * 2,
@@ -49,7 +47,8 @@ const birdVelocity = -2;
 
 
 window.addEventListener('DOMContentLoaded', () => {
-	// load the pipe images
+	// load the images
+	birdImage.src = './assets/images/bird.png';
 	topPipeImage.src = './assets/images/topPipe.png'; 
 	bottomPipeImage.src = './assets/images/bottomPipe.png';
 
