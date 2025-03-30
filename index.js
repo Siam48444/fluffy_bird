@@ -47,8 +47,10 @@ window.onload = () => {
 	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
 
 	// draw pipes
-	topPipeImage = new Image();
-	topPipeImage.src = './assets/images/topPipe.png';
+	// topPipeImage = new Image();
+	// topPipeImage.src = './assets/images/topPipe.png';
+	context.fillStyle = 'red';
+	context.fillRect(PIPE.x, PIPE.y, PIPE.width, PIPE.height);
 
 	setInterval(placePipes, 2000);
 	requestAnimationFrame(update);
@@ -59,8 +61,15 @@ function update() {
 	context.clearRect(0, 0, board.width, board.height); // Clear previous frame
 
 	BIRD.y += gravity; // Move bird down
-
 	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
 
+	PIPE.x -= gravity;
+	context.fillRect(PIPE.x, PIPE.y, PIPE.width, PIPE.height);
+
 	requestAnimationFrame(update); // loop the animation
+}
+
+
+function placePipes() {
+
 }
