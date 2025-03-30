@@ -11,13 +11,13 @@ const BIRD = {
 	width : 50,
 	height : 50,
 	x : BOARD.width / 5,
-	y : BOARD.height / 2 - this.height,
+	y : BOARD.height / 2.2,
 }
 
 // pipes
 let topPipeImage, bottomPipeImage;
 const PIPE = {
-	width : 50,
+	width : BIRD.width * 1.5,
 	height : BOARD.height / 1,
 	x : BOARD.width,
 	y : 0, 
@@ -41,6 +41,19 @@ window.onload = () => {
 	birdImage.src = './assets/images/bird.png';
 	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
 
+	// draw top pipe
+	// topPipeImage = new Image();
+	// topPipeImage.src = './assets/images/topPipe.png';
+	context.fillStyle = 'red';
+	context.fillRect(PIPE.x, PIPE.y, PIPE.width, PIPE.height);
+
+	// draw bottom pipe
+	// bottomPipeImage = new Image();
+	// bottomPipeImage.src = './assets/images/bottomPipe.png';
+	context.fillStyle = 'red';
+	context.fillRect(PIPE.x, PIPE.y, PIPE.width, PIPE.height);
+
+
 	setInterval(placePipes, 2000);
 	requestAnimationFrame(update);
 }	
@@ -56,15 +69,5 @@ function update() {
 
 
 function placePipes() {
-	// draw top pipe
-	// topPipeImage = new Image();
-	// topPipeImage.src = './assets/images/topPipe.png';
-	context.fillStyle = 'red';
-	context.fillRect(PIPE.x, PIPE.y, PIPE.width, PIPE.height);
-
-	// draw bottom pipe
-	// bottomPipeImage = new Image();
-	// bottomPipeImage.src = './assets/images/bottomPipe.png';
-	context.fillStyle = 'red';
-	context.fillRect(PIPE.x, PIPE.y, PIPE.width, PIPE.height);
+	
 }
