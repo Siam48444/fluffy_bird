@@ -18,12 +18,6 @@ const BIRD = {
 
 // pipes
 let topPipeImage, bottomPipeImage;
-const PIPE = {
-	width : BIRD.width * 1.5,
-	height : BOARD.height / 1.7,
-	x : BOARD.width,
-	y : 0, 
-}
 
 
 // physics
@@ -68,14 +62,28 @@ function update() {
 	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); 
 
 	//draw pipes
-	PIPE.x += pipeVelocity;
-	context.drawImage(topPipeImage, PIPE.x, PIPE.y, PIPE.width, PIPE.height); //draw top pipe
-	// context.drawImage(bottomPipeImage, PIPE.x, PIPE.y, PIPE.width, PIPE.height); //draw bottom pipe
+	TOP_PIPE.x += pipeVelocity;
+	BOTTOM_PIPE.x += pipeVelocity;
+
+	context.drawImage(topPipeImage, TOP_PIPE.x, TOP_PIPE.y, TOP_PIPE.width, TOP_PIPE.height); //draw top pipe
+	context.drawImage(bottomPipeImage, BOTTOM_PIPE.x, BOTTOM_PIPE.y, BOTTOM_PIPE.width, BOTTOM_PIPE.height); //draw bottom pipe
 
 	requestAnimationFrame(update); // loop the animation
 }
 
 
 function placePipes() {
-	
+	let TOP_PIPE = {
+		width : BIRD.width * 2,
+		height : BOARD.height / 1.7,
+		x : BOARD.width,
+		y : 0, 
+	}
+
+	let BOTTOM_PIPE = {
+		width : TOP_PIPE.width,
+		height : BOARD.height / 1.7,
+		x : BOARD.width,
+		y : BOARD.height, 
+	}
 }
