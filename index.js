@@ -1,30 +1,25 @@
 // board
-let board;
-let context;
-
-const BOARD = {
+let board, context;
+const board = {
 	width : window.innerWidth,
 	height : window.innerHeight,
 }
 
 // bird
 let birdImage;
-
-const BIRD = {
+const bird = {
 	width : 50,
 	height : 50,
-	x : BOARD.width / 5,
-	y : BOARD.height / 2.2,
+	x : board.width / 5,
+	y : board.height / 2.2,
 }
 
 // pipes
-let topPipeImage;
-let bottomPipeImage;
-
-const PIPE = {
+let topPipeImage, bottomPipeImage;
+const pipe = {
 	width : 50,
-	height : BOARD.height / 2,
-	x : BOARD.width,
+	height : board.height / 2,
+	x : board.width,
 	y : 0, 
 }
 
@@ -38,19 +33,19 @@ window.onload = () => {
 	context = board.getContext('2d'); // used for 2d drawing on the board
 
 	// set the game board dimensions
-	board.width = BOARD.width;
-	board.height = BOARD.height;
+	board.width = board.width;
+	board.height = board.height;
 
 	// draw the fluffy bird
 	birdImage = new Image();
 	birdImage.src = './assets/images/bird.png';
-	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
+	context.drawImage(birdImage, bird.x, bird.y, bird.width, bird.height);
 
 	// draw pipes
 	// topPipeImage = new Image();
 	// topPipeImage.src = './assets/images/topPipe.png';
 	context.fillStyle = 'red';
-	context.fillRect(PIPE.x, PIPE.y, PIPE.width, PIPE.height);
+	context.fillRect(pipe.x, pipe.y, pipe.width, pipe.height);
 
 	setInterval(placePipes, 2000);
 	requestAnimationFrame(update);
@@ -60,11 +55,11 @@ window.onload = () => {
 function update() {
 	context.clearRect(0, 0, board.width, board.height); // Clear previous frame
 
-	BIRD.y += gravity; // Move bird down
-	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
+	bird.y += gravity; // Move bird down
+	context.drawImage(birdImage, bird.x, bird.y, bird.width, bird.height);
 
-	PIPE.x -= gravity;
-	context.fillRect(PIPE.x, PIPE.y, PIPE.width, PIPE.height);
+	pipe.x -= gravity;
+	context.fillRect(pipe.x, pipe.y, pipe.width, pipe.height);
 
 	requestAnimationFrame(update); // loop the animation
 }
