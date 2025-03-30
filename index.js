@@ -28,7 +28,7 @@ const PIPE = {
 
 // physics
 const gravity = 2;
-const pipeVelocity = -2;
+const pipeVelocity = -3;
 const birdVelocity = -2;
 
 
@@ -52,10 +52,8 @@ window.onload = () => {
 	topPipeImage.src = './assets/images/topPipe.png';
 
 	// draw bottom pipe
-	// bottomPipeImage = new Image();
-	// bottomPipeImage.src = './assets/images/bottomPipe.png';
-	context.fillStyle = 'red';
-	context.fillRect(PIPE.x, PIPE.y, PIPE.width, PIPE.height);
+	bottomPipeImage = new Image();
+	bottomPipeImage.src = './assets/images/bottomPipe.png';
 
 
 	setInterval(placePipes, 2000);
@@ -66,8 +64,13 @@ window.onload = () => {
 function update() {
 	context.clearRect(0, 0, board.width, board.height); // Clear previous frame
 
-	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); //draw bird
+	//draw bird
+	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); 
+
+	//draw pipes
+	PIPE.x += pipeVelocity;
 	context.drawImage(topPipeImage, PIPE.x, PIPE.y, PIPE.width, PIPE.height); //draw top pipe
+	// context.drawImage(bottomPipeImage, PIPE.x, PIPE.y, PIPE.width, PIPE.height); //draw bottom pipe
 
 	requestAnimationFrame(update); // loop the animation
 }
