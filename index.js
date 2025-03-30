@@ -1,5 +1,10 @@
-// board
-let board, context;
+// the game board
+const board = document.getElementById('board');
+const context = board.getContext('2d'); // used for 2d drawing on the board
+
+// set the game board dimensions
+board.width = BOARD.width;
+board.height = BOARD.height;
 
 const BOARD = {
 	width : window.innerWidth,
@@ -40,12 +45,9 @@ const birdVelocity = -2;
 
 
 window.onload = () => {
-	board = document.getElementById('board');
-	context = board.getContext('2d'); // used for 2d drawing on the board
+	
 
-	// set the game board dimensions
-	board.width = BOARD.width;
-	board.height = BOARD.height;
+	
 
 	// draw the fluffy bird
 	birdImage = new Image();
