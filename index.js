@@ -30,13 +30,8 @@ let pipeArray = [];
 const pipeInterval = 1500; // in milliseconds
 const pipeSpacing = BIRD.height * 5;
 
-// draw the top pipe
-const topPipeImage = new Image();
-topPipeImage.src = './assets/images/topPipe.png';
-
-// draw the bottom pipe
+const topPipeImage = new Image(); // pipe images
 const bottomPipeImage = new Image();
-bottomPipeImage.src = './assets/images/bottomPipe.png';
 
 const TOP_PIPE = {
 	width : BIRD.width * 2,
@@ -53,18 +48,14 @@ const birdVelocity = -2;
 
 
 
-window.onload = () => {
-	
-
-	
-
-	
-
-	
+window.addEventListener('DOMContentLoaded', () => {
+	// load the pipe images
+	topPipeImage.src = './assets/images/topPipe.png'; 
+	bottomPipeImage.src = './assets/images/bottomPipe.png';
 
 	setInterval(placePipes, pipeInterval);
 	requestAnimationFrame(update);
-}	
+});
 
 
 function update() {
