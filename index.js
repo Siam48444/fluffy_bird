@@ -20,8 +20,8 @@ const BIRD = {
 let topPipeImage, bottomPipeImage;
 const PIPE = {
 	width : BIRD.width * 1.5,
-	height : BOARD.height / 1,
-	x : BOARD.width - 50,
+	height : BOARD.height / 1.7,
+	x : BOARD.width - 500,
 	y : 0, 
 }
 
@@ -48,10 +48,8 @@ window.onload = () => {
 	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
 
 	// draw top pipe
-	// topPipeImage = new Image();
-	// topPipeImage.src = './assets/images/topPipe.png';
-	context.fillStyle = 'red';
-	context.fillRect(PIPE.x, PIPE.y, PIPE.width, PIPE.height);
+	topPipeImage = new Image();
+	topPipeImage.src = './assets/images/topPipe.png';
 
 	// draw bottom pipe
 	// bottomPipeImage = new Image();
@@ -69,10 +67,7 @@ function update() {
 	context.clearRect(0, 0, board.width, board.height); // Clear previous frame
 
 	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); //draw bird
-	// context.drawImage(topPipeImage, PIPE.x, PIPE.y, PIPE.width, PIPE.height); //draw top pipe
-
-	context.fillStyle = 'red';
-	context.fillRect(PIPE.x, PIPE.y, PIPE.width, PIPE.height);
+	context.drawImage(topPipeImage, PIPE.x, PIPE.y, PIPE.width, PIPE.height); //draw top pipe
 
 	requestAnimationFrame(update); // loop the animation
 }
