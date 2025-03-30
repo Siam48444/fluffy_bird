@@ -1,20 +1,17 @@
 // board
+const BOARD = {
+	width : window.innerWidth,
+	height : window.innerHeight,
+}
+
 const board = document.getElementById('board');
 const context = board.getContext('2d'); // used for 2d drawing on the board
 
 board.width = BOARD.width; // set the game board dimensions
 board.height = BOARD.height;
 
-const BOARD = {
-	width : window.innerWidth,
-	height : window.innerHeight,
-}
-
 
 // bird
-const birdImage = new Image(); // draw the fluffy bird
-context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
-
 const BIRD = {
 	width : 50,
 	height : 50,
@@ -22,15 +19,11 @@ const BIRD = {
 	y : BOARD.height / 2.2,
 }
 
+const birdImage = new Image(); // fluffy bird image
+context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
+
 
 // pipes
-let pipeArray = [];
-const pipeInterval = 1500; // in milliseconds
-const pipeSpacing = BIRD.height * 5; // space between the pipes
-
-const topPipeImage = new Image(); // top pipe images
-const bottomPipeImage = new Image(); // bottom pipe images
-
 const TOP_PIPE = {
 	width : BIRD.width * 2,
 	height : BOARD.height / 1.7,
@@ -38,11 +31,20 @@ const TOP_PIPE = {
 	y : 0, 
 }
 
+let pipeArray = [];
+const pipeInterval = 1500; // in milliseconds
+const pipeSpacing = BIRD.height * 5; // space between the pipes
+
+const topPipeImage = new Image(); // top pipe images
+const bottomPipeImage = new Image(); // bottom pipe images
+
 
 // physics
 const gravity = 2;
 const pipeVelocity = -3;
 const birdVelocity = -2;
+
+
 
 
 
