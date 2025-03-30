@@ -52,6 +52,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	topPipeImage.src = './assets/images/topPipe.png'; 
 	bottomPipeImage.src = './assets/images/bottomPipe.png';
 
+	// start the animations
 	requestAnimationFrame(update);
 	setInterval(placePipes, pipeInterval);
 });
@@ -63,7 +64,7 @@ function update() {
 	context.clearRect(0, 0, board.width, board.height); 
 
 	//draw the bird
-	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); 
+	birdImage.onload = () => { context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); }
 
 	// draw the new pipes from the pipe array
 	for (let pipe of pipeArray) {
