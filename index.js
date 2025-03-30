@@ -64,7 +64,8 @@ function update() {
 
 	//draw pipes
 	for (let pipe of pipeArray) {
-		context.drawImage();
+		pipe.x += pipeVelocity;
+		context.drawImage(pipe.image, pipe.x, pipe.y, pipe.width, pipe.height);
 	}
 
 	requestAnimationFrame(update); // loop the animation
