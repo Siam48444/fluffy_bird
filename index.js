@@ -38,12 +38,12 @@ bottomPipeImage.src = './assets/images/bottomPipe.png';
 
 
 // physics and others
-const gravity = 2; // gravity of the falling bird
-const birdVelocity = -10; // velocity of the jumping bird
-const pipeVelocity = -(BOARD.width / 500); // velocity of the moving pipes
-const pipeArray = []; // used to add more pipes in the game
-const pipeInterval = 1000; // time between each pipe generation (in milliseconds)
-const pipeSpacing = BOARD.height / 3; // space between the pipes
+let gravity = 0.3; // gravity of the falling bird
+let birdVelocity = 0; // velocity of the jumping bird (0 by default)
+let pipeVelocity = -(BOARD.width / 500); // velocity of the moving pipes
+let pipeArray = []; // used to add more pipes in the game
+let pipeInterval = 1000; // time between each pipe generation (in milliseconds)
+let pipeSpacing = BOARD.height / 3; // space between the pipes
 
 
 
@@ -68,6 +68,8 @@ function update() {
 	context.clearRect(0, 0, board.width, board.height); 
 
 	//draw the bird
+	BIRD.y += Math.max(birdVelocity, 0);
+	birdVelocity += gravity;
 	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
 
 	// draw the new pipes from the pipe array
@@ -90,7 +92,7 @@ function placePipes() {
 		width: TOP_PIPE.width,
 		height: TOP_PIPE.height,
 		x: TOP_PIPE.x,
-		y: -randomPipeY, // move the top pipe a little upwards for randomization 
+		y: -randomPipeY, // move the top pipe a little upwards for randomly 
 		image: topPipeImage, 
 	}
 	pipeArray.push(topPipe); // add the new pipe
@@ -100,7 +102,7 @@ function placePipes() {
 		width: TOP_PIPE.width,
 		height: TOP_PIPE.height,
 		x: TOP_PIPE.x,
-		y: TOP_PIPE.height + pipeSpacing - randomPipeY, 
+		y: TOP_PIPE.height + pipeSpacing - randomPipeY, // move the bottom pipe a little downwards randomly 
 		image: bottomPipeImage, 
 	}
 	pipeArray.push(bottomPipe); // add the new pipe
@@ -116,6 +118,6 @@ function jump(e) {
 		e.code === 'NumpadEnter' ||
 		e.code === 'Enter'
 	) {
-		BIRD.y += birdVelocity;
+		birdVelocity = -6;
 	}
 }
