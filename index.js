@@ -40,7 +40,7 @@ bottomPipeImage.src = './assets/images/bottomPipe.png';
 // physics and others
 let gravity = 0.3; // gravity of the falling bird
 let birdVelocity = 0; // initial velocity of the bird
-let jumpVelocity = -(BOARD.height / 150); // velocity of the jumping bird
+let jumpVelocity = -8; // velocity of the jumping bird
 
 let pipeVelocity = -5; // velocity of the moving pipes
 let pipeInterval = 800; // time between each pipe generation (in milliseconds)
@@ -58,7 +58,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	// make the bird jump
 	window.addEventListener('keydown', jumpOnKeypress);
-	window.addEventListener('click', () => { birdVelocity = -6 });
+	window.addEventListener('click', () => { birdVelocity = jumpVelocity });
 
 	// start the animations
 	requestAnimationFrame(update);
@@ -140,6 +140,8 @@ function placePipes() {
 
 // make the bird jump on keypress
 function jumpOnKeypress(e) {
+	if (gameOver) return;
+
 	// jump if any key is pressed
 	if ( 
 		e.code === 'Space' || 
