@@ -39,11 +39,12 @@ bottomPipeImage.src = './assets/images/bottomPipe.png';
 
 // physics and others
 let gravity = 0.3; // gravity of the falling bird
-let birdVelocity = 0; // velocity of the jumping bird (0 by default)
-let pipeVelocity = -(BOARD.width / 500); // velocity of the moving pipes
-let pipeArray = []; // used to add more pipes in the game
+let birdVelocity = 0; // initial velocity of the bird
+let jumpVelocity = -(BOARD.height / 150); // velocity of the jumping bird
+let pipeVelocity = -6; // velocity of the moving pipes
 let pipeInterval = 1500; // time between each pipe generation (in milliseconds)
 let pipeSpacing = BIRD.height * 5; // space between the pipes
+let pipeArray = []; // used to add more pipes in the game
 
 
 
@@ -122,9 +123,6 @@ function placePipes() {
 
 // make the bird jump
 function jump(e) {
-	// jump rate
-	const jumpRate = -6;
-
 	// jump if any key is pressed
 	if ( 
 		e.code === 'Space' || 
@@ -133,6 +131,6 @@ function jump(e) {
 		e.code === 'NumpadEnter' ||
 		e.code === 'Enter'
 	) {
-		birdVelocity = jumpRate;
+		birdVelocity = jumpVelocity;
 	}
 }
