@@ -42,9 +42,8 @@ let gravity = 0.3; // gravity of the falling bird
 let birdVelocity = 0; // velocity of the jumping bird (0 by default)
 let pipeVelocity = -(BOARD.width / 500); // velocity of the moving pipes
 let pipeArray = []; // used to add more pipes in the game
-let pipeInterval = 1000; // time between each pipe generation (in milliseconds)
+let pipeInterval = 1500; // time between each pipe generation (in milliseconds)
 let pipeSpacing = BIRD.height * 5; // space between the pipes
-
 
 
 
