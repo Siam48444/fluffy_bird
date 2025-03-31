@@ -20,6 +20,7 @@ const BIRD = {
 }
 
 const birdImage = new Image(); // fluffy bird image
+birdImage.src = './assets/images/bird.png';
 
 
 // pipes
@@ -32,6 +33,8 @@ const TOP_PIPE = {
 
 const topPipeImage = new Image(); // top pipe images
 const bottomPipeImage = new Image(); // bottom pipe images
+topPipeImage.src = './assets/images/topPipe.png'; 
+bottomPipeImage.src = './assets/images/bottomPipe.png';	
 
 
 // physics and others
@@ -46,11 +49,6 @@ const pipeSpacing = BIRD.height * 5; // space between the pipes
 
 
 window.addEventListener('DOMContentLoaded', () => {
-	// load the images
-	birdImage.src = './assets/images/bird.png';
-	topPipeImage.src = './assets/images/topPipe.png'; 
-	bottomPipeImage.src = './assets/images/bottomPipe.png';
-
 	// draw the bird
 	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); 
 
