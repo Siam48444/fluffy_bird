@@ -68,8 +68,8 @@ function update() {
 	context.clearRect(0, 0, board.width, board.height); 
 
 	//draw the bird
-	BIRD.y += Math.max(birdVelocity, 0);
 	birdVelocity += gravity;
+	BIRD.y += Math.min(BIRD.y + birdVelocity, 0);
 	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
 
 	// draw the new pipes from the pipe array
