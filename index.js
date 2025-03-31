@@ -43,7 +43,7 @@ let birdVelocity = 0; // velocity of the jumping bird (0 by default)
 let pipeVelocity = -(BOARD.width / 500); // velocity of the moving pipes
 let pipeArray = []; // used to add more pipes in the game
 let pipeInterval = 1000; // time between each pipe generation (in milliseconds)
-let pipeSpacing = BOARD.height / 3; // space between the pipes
+let pipeSpacing = BIRD.height * 5; // space between the pipes
 
 
 
@@ -54,7 +54,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	// make the bird jump
 	window.addEventListener('keydown', jump);
-	// window.addEventListener('click', jump);
+	window.addEventListener('click', jump);
 
 	// start the animations
 	requestAnimationFrame(update);
@@ -68,8 +68,8 @@ function update() {
 	context.clearRect(0, 0, board.width, board.height); 
 
 	//draw the bird
-	birdVelocity += gravity;
-	BIRD.y += Math.min(BIRD.y + birdVelocity, 0);
+	BIRD.y += birdVelocity;
+	birdVelocity += gravity; // update the bird velocity using the gravity
 	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
 
 	// draw the new pipes from the pipe array
@@ -111,13 +111,19 @@ function placePipes() {
 
 // make the bird jump
 function jump(e) {
-	if (
+	// jump if any key is pressed
+	if ( 
 		e.code === 'Space' || 
 		e.code === 'KeyW' || 
 		e.code === 'ArrowUp' ||
 		e.code === 'NumpadEnter' ||
 		e.code === 'Enter'
 	) {
+		birdVelocity = -6;
+	}
+
+	// jump if mouse is clicked
+	else {
 		birdVelocity = -6;
 	}
 }
