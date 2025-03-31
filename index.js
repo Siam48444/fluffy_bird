@@ -42,8 +42,8 @@ let gravity = 0.3; // gravity of the falling bird
 let birdVelocity = 0; // initial velocity of the bird
 let jumpVelocity = -(BOARD.height / 150); // velocity of the jumping bird
 
-let pipeVelocity = -6; // velocity of the moving pipes
-let pipeInterval = 1500; // time between each pipe generation (in milliseconds)
+let pipeVelocity = -5; // velocity of the moving pipes
+let pipeInterval = 800; // time between each pipe generation (in milliseconds)
 let pipeSpacing = BIRD.height * 5; // space between the pipes
 let pipeArray = []; // used to add more pipes in the game
 
@@ -97,7 +97,7 @@ function update() {
 		context.drawImage(pipe.image, pipe.x, pipe.y, pipe.width, pipe.height); // draw the pipes
 
 		// detect if the game is over
-		if (detectCollission(BIRD, pipe)) gameOver = true;
+		if (detectCollision(BIRD, pipe)) gameOver = true;
 	}
 
 	// loop the animation
@@ -150,7 +150,12 @@ function jump(e) {
 }
 
 
-// detect if the game is over
-function detectCollission(bird, pipe) {
-	return bird.x < pipe.x + ;
+// detect if the game is over (collision between bird and pipe)
+function detectCollision(bird, pipe) {
+	return (
+		bird.x < pipe.x + pipe.width && // Bird's left edge is left of pipe's right edge
+        bird.x + bird.width > pipe.x && // Bird's right edge is right of pipe's left edge
+        bird.y < pipe.y + pipe.height && // Bird's top edge is above pipe's bottom edge
+        bird.y + bird.height > pipe.y // Bird's bottom edge is below pipe's top edge
+	);
 }
