@@ -1,4 +1,16 @@
+.container {
+	background-color: #000000;
+	height: 100vh;
+	height: 100dvh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .board {
 	overflow: hidden;
 	display: block;
+	background-color: #fff;
+	height: min(100%, 100vw);
+	aspect-ratio: 1;
 }

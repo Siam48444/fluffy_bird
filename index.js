@@ -3,8 +3,8 @@ const board = document.getElementById('board');
 const context = board.getContext('2d'); // used for 2 dimensional drawing on the board
 
 const BOARD = {
-	width: window.innerWidth,
-	height: window.innerHeight,
+	width: board.clientWidth,
+	height: board.clientHeight,
 }
 
 board.width = BOARD.width; // set the game board dimensions
@@ -38,7 +38,7 @@ bottomPipeImage.src = './assets/images/bottomPipe.png';
 
 
 // physics and others
-let gravity = 0.3; // gravity of the falling bird
+let gravity = 0.35; // gravity of the falling bird
 let birdVelocity = 0; // initial velocity of the bird
 let jumpVelocity = -8; // velocity of the jumping bird
 
