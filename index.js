@@ -58,7 +58,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	// start the animations
 	requestAnimationFrame(update);
-	setInterval(placePipes, pipeInterval);
+	// setInterval(placePipes, pipeInterval);
 });
 
 
@@ -70,6 +70,19 @@ function update() {
 	//draw the bird
 	BIRD.y += birdVelocity;
 	birdVelocity += gravity; // update the bird velocity using the gravity
+
+	// Prevent the bird from going above the screen
+	if (BIRD.y < 0) {
+		BIRD.y = 0;
+		birdVelocity = 0; 
+	}
+	// Prevent the bird from going below the screen
+	if (BIRD.y > BOARD.height - BIRD.height) {
+		BIRD.y = BOARD.height - BIRD.height;
+		birdVelocity = 0; 
+		gameOver(); // Call a function to end the game
+	}
+
 	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
 
 	// draw the new pipes from the pipe array
