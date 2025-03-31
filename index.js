@@ -3,8 +3,8 @@ const board = document.getElementById('board');
 const context = board.getContext('2d'); // used for 2 dimensional drawing on the board
 
 const BOARD = {
-	width: Math.min(window.innerWidth, 1000),
-	height: Math.min(window.innerHeight, 1000),
+	width: window.innerWidth,
+	height: window.innerHeight,
 }
 
 board.width = BOARD.width; // set the game board dimensions
@@ -57,7 +57,8 @@ window.addEventListener('DOMContentLoaded', () => {
 	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); 
 
 	// make the bird jump
-	window.addEventListener('keydown', jump);
+	window.addEventListener('keydown', jumpOnKeypress);
+	window.addEventListener('click', () => { birdVelocity = -6 });
 
 	// start the animations
 	requestAnimationFrame(update);
@@ -137,8 +138,8 @@ function placePipes() {
 }
 
 
-// make the bird jump
-function jump(e) {
+// make the bird jump on keypress
+function jumpOnKeypress(e) {
 	// jump if any key is pressed
 	if ( 
 		e.code === 'Space' || 
