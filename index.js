@@ -54,7 +54,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	// make the bird jump
 	window.addEventListener('keydown', jump);
-	window.addEventListener('click', jump);
 
 	// start the animations
 	requestAnimationFrame(update);
@@ -67,9 +66,9 @@ function update() {
 	// Clear previous frame
 	context.clearRect(0, 0, board.width, board.height); 
 
-	//draw the bird
+	// update the bird velocity using the gravity
 	BIRD.y += birdVelocity;
-	birdVelocity += gravity; // update the bird velocity using the gravity
+	birdVelocity += gravity; 
 
 	// Prevent the bird from going above the screen
 	if (BIRD.y < 0) {
@@ -80,9 +79,9 @@ function update() {
 	if (BIRD.y > BOARD.height - BIRD.height) {
 		BIRD.y = BOARD.height - BIRD.height;
 		birdVelocity = 0; 
-		gameOver(); // Call a function to end the game
 	}
 
+	//draw the bird
 	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
 
 	// draw the new pipes from the pipe array
@@ -135,11 +134,6 @@ function jump(e) {
 		e.code === 'NumpadEnter' ||
 		e.code === 'Enter'
 	) {
-		birdVelocity = jumpRate;
-	}
-
-	// jump if mouse is clicked
-	else {
 		birdVelocity = jumpRate;
 	}
 }
