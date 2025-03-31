@@ -41,10 +41,14 @@ bottomPipeImage.src = './assets/images/bottomPipe.png';
 let gravity = 0.3; // gravity of the falling bird
 let birdVelocity = 0; // initial velocity of the bird
 let jumpVelocity = -(BOARD.height / 150); // velocity of the jumping bird
+
 let pipeVelocity = -6; // velocity of the moving pipes
 let pipeInterval = 1500; // time between each pipe generation (in milliseconds)
 let pipeSpacing = BIRD.height * 5; // space between the pipes
 let pipeArray = []; // used to add more pipes in the game
+
+let gameOver = false;
+
 
 
 
@@ -63,6 +67,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // update the frames
 function update() {
+	// stop the function if the game is over
+	if (gameOver) return;
+
 	// Clear previous frame
 	context.clearRect(0, 0, board.width, board.height); 
 
@@ -88,6 +95,9 @@ function update() {
 	for (let pipe of pipeArray) {
 		pipe.x += pipeVelocity; // move the pipes to the left
 		context.drawImage(pipe.image, pipe.x, pipe.y, pipe.width, pipe.height); // draw the pipes
+
+		// detect if the game is over
+		if (detectCollission(BIRD, pipe)) gameOver = true;
 	}
 
 	// loop the animation
@@ -97,7 +107,11 @@ function update() {
 
 // place the pipes
 function placePipes() {
-	let randomPipeY = (Math.random() * TOP_PIPE.height / 2.2); // random Y positions for the pipes 
+	// stop the function if the game is over
+	if (gameOver) return;
+
+	// random Y positions for the pipes 
+	let randomPipeY = (Math.random() * TOP_PIPE.height / 2.2); 
 
 	// new top pipes
 	let topPipe = {
@@ -133,4 +147,10 @@ function jump(e) {
 	) {
 		birdVelocity = jumpVelocity;
 	}
+}
+
+
+// detect if the game is over
+function detectCollission(bird, pipe) {
+	return bird.x < pipe.x + ;
 }
