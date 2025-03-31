@@ -97,7 +97,9 @@ function update() {
 		context.drawImage(pipe.image, pipe.x, pipe.y, pipe.width, pipe.height); // draw the pipes
 
 		// detect if the game is over
-		if (detectCollision(BIRD, pipe)) gameOver = true;
+		if (detectCollision(BIRD, pipe)) {
+			gameOver = true;
+		}
 	}
 
 	// loop the animation
