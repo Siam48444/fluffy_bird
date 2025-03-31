@@ -123,6 +123,7 @@ function placePipes() {
 		x: TOP_PIPE.x,
 		y: -randomPipeY, // move the top pipe a little upwards for randomly 
 		image: topPipeImage, 
+		passed: false,
 	}
 	pipeArray.push(topPipe); // add the new pipe
 
@@ -133,6 +134,7 @@ function placePipes() {
 		x: TOP_PIPE.x,
 		y: TOP_PIPE.height + pipeSpacing - randomPipeY, // move the bottom pipe a little downwards randomly 
 		image: bottomPipeImage, 
+		passed: false,
 	}
 	pipeArray.push(bottomPipe); // add the new pipe
 }
