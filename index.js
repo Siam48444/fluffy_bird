@@ -1,11 +1,11 @@
 // board
-const BOARD = {
-	width: window.innerWidth,
-	height: window.innerHeight,
-}
-
 const board = document.getElementById('board');
 const context = board.getContext('2d'); // used for 2 dimensional drawing on the board
+
+const BOARD = {
+	width: Math.min(window.innerWidth, 1000),
+	height: Math.min(window.innerHeight, 1000),
+}
 
 board.width = BOARD.width; // set the game board dimensions
 board.height = BOARD.height;
