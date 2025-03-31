@@ -14,7 +14,7 @@ board.height = BOARD.height;
 // bird
 const BIRD = {
 	width: 60,
-	height: 50,
+	height: 500,
 	x: BOARD.width / 5,
 	y: BOARD.height / 2.2,
 }
@@ -57,7 +57,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	// start the animations
 	requestAnimationFrame(update);
-	// setInterval(placePipes, pipeInterval);
+	setInterval(placePipes, pipeInterval);
 });
 
 
