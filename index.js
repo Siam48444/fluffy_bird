@@ -155,9 +155,9 @@ function jump(e) {
 // detect if the game is over (collision between bird and pipe)
 function detectCollision(bird, pipe) {
 	return (
-		bird.x < pipe.x + pipe.width && // Bird's left edge is left of pipe's right edge
         bird.x + bird.width > pipe.x && // Bird's right edge is right of pipe's left edge
-        bird.y < pipe.y + pipe.height && // Bird's top edge is above pipe's bottom edge
-        bird.y + bird.height > pipe.y // Bird's bottom edge is below pipe's top edge
+		bird.x < pipe.x + pipe.width && // Bird's left edge is left of pipe's right edge
+        bird.y + bird.height > pipe.y && // Bird's bottom edge is below pipe's top edge
+        bird.y < pipe.y + pipe.height // Bird's top edge is above pipe's bottom edge
 	);
 }
