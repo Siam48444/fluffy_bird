@@ -43,7 +43,7 @@ const birdVelocity = -2; // velocity of the jumping bird
 const pipeVelocity = -(BOARD.width / 500); // velocity of the moving pipes
 const pipeArray = []; // used to add more pipes in the game
 const pipeInterval = 1000; // time between each pipe generation (in milliseconds)
-const pipeSpacing = BIRD.height * 5; // space between the pipes
+const pipeSpacing = BOARD.height / 3; // space between the pipes
 
 
 
