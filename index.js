@@ -13,7 +13,7 @@ board.height = BOARD.height;
 
 // bird
 const BIRD = {
-	width: 50,
+	width: 60,
 	height: 50,
 	x: BOARD.width / 5,
 	y: BOARD.height / 2.2,
@@ -31,15 +31,15 @@ const TOP_PIPE = {
 	y: 0, 
 } // the bottom pipes are generated based on this object
 
-const topPipeImage = new Image(); // top pipe images
-const bottomPipeImage = new Image(); // bottom pipe images
+const topPipeImage = new Image(); // pipe images
+const bottomPipeImage = new Image(); 
 topPipeImage.src = './assets/images/topPipe.png'; 
 bottomPipeImage.src = './assets/images/bottomPipe.png';	
 
 
 // physics and others
 const gravity = 2; // gravity of the falling bird
-const birdVelocity = -2; // velocity of the jumping bird
+const birdVelocity = -10; // velocity of the jumping bird
 const pipeVelocity = -(BOARD.width / 500); // velocity of the moving pipes
 const pipeArray = []; // used to add more pipes in the game
 const pipeInterval = 1000; // time between each pipe generation (in milliseconds)
@@ -51,6 +51,10 @@ const pipeSpacing = BOARD.height / 3; // space between the pipes
 window.addEventListener('DOMContentLoaded', () => {
 	// draw the bird
 	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); 
+
+	// make the bird jump
+	window.addEventListener('keydown', jump);
+	// window.addEventListener('click', jump);
 
 	// start the animations
 	requestAnimationFrame(update);
@@ -68,7 +72,7 @@ function update() {
 
 	// draw the new pipes from the pipe array
 	for (let pipe of pipeArray) {
-		pipe.x += pipeVelocity; // move the pipes
+		pipe.x += pipeVelocity; // move the pipes to the left
 		context.drawImage(pipe.image, pipe.x, pipe.y, pipe.width, pipe.height); // draw the pipes
 	}
 
@@ -100,4 +104,18 @@ function placePipes() {
 		image: bottomPipeImage, 
 	}
 	pipeArray.push(bottomPipe); // add the new pipe
+}
+
+
+// make the bird jump
+function jump(e) {
+	if (
+		e.code === 'Space' || 
+		e.code === 'KeyW' || 
+		e.code === 'ArrowUp' ||
+		e.code === 'NumpadEnter' ||
+		e.code === 'Enter'
+	) {
+		BIRD.y += birdVelocity;
+	}
 }
