@@ -111,6 +111,9 @@ function placePipes() {
 
 // make the bird jump
 function jump(e) {
+	// jump rate
+	const jumpRate = -6;
+
 	// jump if any key is pressed
 	if ( 
 		e.code === 'Space' || 
@@ -119,11 +122,11 @@ function jump(e) {
 		e.code === 'NumpadEnter' ||
 		e.code === 'Enter'
 	) {
-		birdVelocity = -6;
+		birdVelocity = jumpRate;
 	}
 
 	// jump if mouse is clicked
 	else {
-		birdVelocity = -6;
+		birdVelocity = jumpRate;
 	}
 }
