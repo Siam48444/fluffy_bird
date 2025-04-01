@@ -26,7 +26,7 @@ birdImage.src = './assets/images/bird.png';
 // pipes
 const TOP_PIPE = {
 	width: BIRD.width * 2,
-	height: BOARD.height,
+	height: BOARD.height * 0.6,
 	x: BOARD.width,
 	y: 0, 
 } // the bottom pipes are generated based on this object
@@ -44,7 +44,7 @@ let jumpVelocity = -8; // velocity of the jumping bird
 
 let pipeVelocity = -5; // velocity of the moving pipes
 let pipeInterval = 800; // time between each pipe generation (in milliseconds)
-let pipeSpacing = BIRD.height * 5; // space between the pipes
+let pipeSpacing = BIRD.height * 4.5; // space between the pipes
 let pipeArray = []; // used to add more pipes in the game
 
 let gameOver = false;
@@ -113,7 +113,7 @@ function placePipes() {
 	if (gameOver) return;
 
 	// random Y positions for the pipes 
-	let randomPipeY = Math.random() * (TOP_PIPE.height / 2.2); 
+	let randomPipeY = Math.random() * (TOP_PIPE.height * 0.9); 
 
 	// new top pipes
 	let topPipe = {
