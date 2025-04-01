@@ -26,7 +26,7 @@ birdImage.src = './assets/images/bird.png';
 // pipes
 const TOP_PIPE = {
 	width: BIRD.width * 2,
-	height: BOARD.height * 0.6,
+	height: BOARD.height,
 	x: BOARD.width,
 	y: 0, 
 } // the bottom pipes are generated based on this object
@@ -113,7 +113,7 @@ function placePipes() {
 	if (gameOver) return;
 
 	// random Y positions for the pipes 
-	let randomPipeY = Math.random() * (TOP_PIPE.height * 0.9); 
+	let randomPipeY = Math.random() * (BOARD.height * 0.5); 
 
 	// new top pipes
 	let topPipe = {
