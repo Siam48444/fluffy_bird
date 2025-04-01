@@ -7,13 +7,13 @@ const BOARD = {
 	height: board.clientHeight,
 }
 
-board.width = BOARD.width; // set the game board dimensions
+board.width = BOARD.width; // set the initial board dimensions 
 board.height = BOARD.height;
 
 
 // bird
 const BIRD = {
-	width: 60,
+	width: 50,
 	height: 50,
 	x: BOARD.width / 5,
 	y: BOARD.height / 2.2,
@@ -51,7 +51,6 @@ let gameOver = false;
 
 
 
-
 window.addEventListener('DOMContentLoaded', () => {
 	// draw the bird
 	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); 
@@ -61,13 +60,13 @@ window.addEventListener('DOMContentLoaded', () => {
 	window.addEventListener('click', () => { birdVelocity = jumpVelocity });
 
 	// start the animations
-	requestAnimationFrame(update);
+	requestAnimationFrame(updateFrames);
 	setInterval(placePipes, pipeInterval);
 });
 
 
 // update the frames
-function update() {
+function updateFrames() {
 	// stop the function if the game is over
 	if (gameOver) return;
 
@@ -104,7 +103,7 @@ function update() {
 	}
 
 	// loop the animation
-	requestAnimationFrame(update); 
+	requestAnimationFrame(updateFrames); 
 }
 
 

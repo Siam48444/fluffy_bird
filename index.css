@@ -1,5 +1,10 @@
+:root {
+	--boardMaxWidth: 1000px;
+}
+
+
 .container {
-	background-color: #000000;
+	background-color: #999;
 	height: 100vh;
 	height: 100dvh;
 	display: flex;
@@ -8,9 +13,9 @@
 }
 
 .board {
-	overflow: hidden;
 	display: block;
 	background-color: #fff;
-	height: min(100%, 100vw);
-	aspect-ratio: 1;
+	width: 100vw;
+	height: 100vh;
+	height: 100dvh;
 }
