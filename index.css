@@ -4,18 +4,18 @@
 
 
 .container {
-	background-color: #999;
+	background-color: #555;
 	height: 100vh;
 	height: 100dvh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	position: relative;
 }
 
 .board {
-	display: block;
 	background-color: #fff;
-	width: 100vw;
-	height: 100vh;
-	height: 100dvh;
+	display: block;
+	width: min(100%, var(--boardMaxWidth));
+	aspect-ratio: 1;
 }

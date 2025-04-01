@@ -26,8 +26,8 @@ birdImage.src = './assets/images/bird.png';
 // pipes
 const TOP_PIPE = {
 	width: BIRD.width * 2,
-	height: BOARD.height / 1.7,
-	x: BOARD.width + 1,
+	height: BOARD.height,
+	x: BOARD.width,
 	y: 0, 
 } // the bottom pipes are generated based on this object
 
@@ -113,7 +113,7 @@ function placePipes() {
 	if (gameOver) return;
 
 	// random Y positions for the pipes 
-	let randomPipeY = (Math.random() * TOP_PIPE.height / 2.2); 
+	let randomPipeY = Math.random() * (TOP_PIPE.height / 2.2); 
 
 	// new top pipes
 	let topPipe = {
@@ -159,9 +159,12 @@ function jumpOnKeypress(e) {
 // detect if the game is over (collision between bird and pipe)
 function detectCollision(bird, pipe) {
 	return (
-        bird.x + bird.width > pipe.x && // Bird's right edge is right of pipe's left edge
-		bird.x < pipe.x + pipe.width && // Bird's left edge is left of pipe's right edge
-        bird.y + bird.height > pipe.y && // Bird's bottom edge is below pipe's top edge
-        bird.y < pipe.y + pipe.height // Bird's top edge is above pipe's bottom edge
+		// collision in the x axis
+        bird.x + bird.width > pipe.x && 
+		bird.x < pipe.x + pipe.width && 
+
+		// collision in the y axis
+        bird.y + bird.height > pipe.y &&
+        bird.y < pipe.y + pipe.height 
 	);
 }
