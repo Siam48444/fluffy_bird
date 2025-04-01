@@ -113,7 +113,7 @@ function placePipes() {
 	if (gameOver) return;
 
 	// random Y positions for the pipes 
-	let randomPipeY = Math.random() * (BOARD.height * 0.4); 
+	let randomPipeY = Math.random() * (BOARD.height * 0.4) + BOARD.height * 0.3; 
 
 	// new top pipes
 	let topPipe = {
