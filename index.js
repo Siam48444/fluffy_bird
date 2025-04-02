@@ -42,10 +42,9 @@ function adjustBoardSize() {
 	board.width = board.height = size;
 
 	// Recalculate bird properties
-	BIRD.width = board.width * 0.06;
-	BIRD.height = board.width * 0.06;
+	BIRD.width = BIRD.height = board.width * 0.06;
 	BIRD.x = board.width / 5;
-	BIRD.y = board.height / 2.2;
+	BIRD.y = (board.height / 2) - (BIRD.height * 0.5);
 
 	// Update pipe properties
 	TOP_PIPE.width = BIRD.width * 2;
