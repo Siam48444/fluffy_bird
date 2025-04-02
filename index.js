@@ -5,6 +5,7 @@ board.height = window.innerHeight; // set the initial board dimensions
 board.width = board.height; 
 
 window.addEventListener('DOMContentLoaded', adjustBoard); // make the board width responsive
+window.addEventListener('load', adjustBoard);
 window.addEventListener('resize', adjustBoard);
 
 
@@ -41,7 +42,7 @@ let pipeArray = []; // used to add more pipes in the game
 let gameOver = false; // track if the game is over
 
 
-// adjust the game board and the elements
+// adjust the game board and the inner elements
 function adjustBoard() {
 	// set the board's minimum width
 	let minSize = Math.min(window.innerWidth, window.innerHeight);
@@ -75,6 +76,10 @@ function adjustBoard() {
 	pipeVelocity = -(board.width * 0.005);
 	pipeSpacing = BIRD.height * 4.5;
 	pipeInterval = board.width; 
+
+	// set the pipe interval for smaller screen
+	if (board.width < 777) { pipeInterval = board.width * 1.7; }
+	if (board.width < 444) { pipeInterval = board.width * 2.5; }
 }
 
 
