@@ -1,5 +1,6 @@
 :root {
 	--boardMaxWidth: 1111px;
+	--skyColor: #deeaff;
 }
 
 
@@ -16,6 +17,5 @@
 .board {
 	background-color: #fff;
 	display: block;
-	/* height: min(100%, var(--boardMaxWidth));
-	aspect-ratio: 1; */
+	background-color: var(--skyColor);
 }
