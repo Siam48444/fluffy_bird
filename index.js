@@ -35,11 +35,16 @@ let pipeArray = []; // used to add more pipes in the game
 let gameOver = false;
 
 
-// make the board responsive
+// make the board width responsive
 function adjustBoardSize() {
 	// Ensure the board remains a square
-	let size = Math.min(window.innerWidth, window.innerHeight);
-	board.width = board.height = size;
+	let minSize = Math.min(window.innerWidth, window.innerHeight);
+	board.width = board.height = minSize;
+
+	let maxSize = 1111;
+	if (board.width > maxSize) {
+		board.width = board.height = maxSize;
+	}
 
 	// Recalculate bird properties
 	BIRD.width = BIRD.height = board.width * 0.06;
