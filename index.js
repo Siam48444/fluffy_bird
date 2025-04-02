@@ -150,9 +150,10 @@ function updateFrames() {
 	context.drawImage(groundImage, GROUND.x, GROUND.y, GROUND.width, GROUND.height);
 
 	// draw the score
-	context.fillStyle = 'white';
-	context.font = 'inter';
-	context.fillText(score, board.width * 0.5, board.width * 0.05);
+	context.fillStyle = 'black';
+	context.font = `${board.width * 0.05}px Inter`;
+	context.textAlign = 'center';
+	context.fillText(score, board.width * 0.5, board.width * 0.1);
 
 	// loop the animation
 	requestAnimationFrame(updateFrames); 
