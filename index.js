@@ -74,7 +74,7 @@ function adjustBoard() {
 	jumpVelocity = -(board.width * 0.01);
 	pipeVelocity = -(board.width * 0.005);
 	pipeSpacing = BIRD.height * 4.5;
-	pipeInterval = board.width;
+	pipeInterval = board.width; 
 }
 
 
