@@ -57,7 +57,7 @@ function adjustBoard() {
 	}
 
 	// recalculate bird properties
-	BIRD.width = BIRD.height = board.width * 0.08;
+	BIRD.width = BIRD.height = board.width * 0.09;
 	BIRD.x = board.width / 5;
 	BIRD.y = (board.height / 2) - (BIRD.height * 0.5);
 
@@ -135,9 +135,9 @@ function updateFrames() {
 		}
 
 		// detect if the game is over
-		// if (detectCollision(BIRD, pipe)) {
-		// 	gameOver = true;
-		// }
+		if (detectCollision(BIRD, pipe)) {
+			gameOver = true;
+		}
 	}
 
 	// draw the ground
