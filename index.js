@@ -51,13 +51,13 @@ function adjustBoard() {
 	board.width = board.height = minSize;
 
 	// set the board's maximum width
-	let maxSize = 1111;
+	let maxSize = 1234;
 	if (board.width > maxSize) {
 		board.width = board.height = maxSize;
 	}
 
 	// recalculate bird properties
-	BIRD.width = BIRD.height = board.width * 0.09;
+	BIRD.width = BIRD.height = board.width * 0.08;
 	BIRD.x = board.width / 5;
 	BIRD.y = (board.height / 2) - (BIRD.height * 0.5);
 
@@ -115,7 +115,7 @@ function updateFrames() {
 	// prevent the bird from going outside the screen
 	setBirdBoundary();
 
-	//draw the bird
+	//draw the bird according to the gravity
 	if (birdVelocity > 0) { context.drawImage(birdDownImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); }
 	else { context.drawImage(birdUpImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); }
 
