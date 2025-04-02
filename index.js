@@ -1,6 +1,6 @@
 // board
 const board = document.getElementById('board');
-const context = board.getContext('2d'); // used for 2 dimensional drawing on the board
+const context = board.getContext('2d'); 
 board.height = window.innerHeight; // set the initial board dimensions 
 board.width = board.height; 
 
@@ -10,13 +10,13 @@ window.addEventListener('resize', adjustBoard);
 
 // bird
 const BIRD = {};
-const birdImage = new Image(); // fluffy bird image
+const birdImage = new Image(); 
 birdImage.src = './assets/images/bird.png';
 
 
 // pipes
 const TOP_PIPE = {}; // the bottom pipes are generated based on this object
-const topPipeImage = new Image(); // pipe images
+const topPipeImage = new Image(); 
 const bottomPipeImage = new Image(); 
 topPipeImage.src = './assets/images/topPipe.png'; 
 bottomPipeImage.src = './assets/images/bottomPipe.png';	
@@ -62,6 +62,12 @@ function adjustBoard() {
 	TOP_PIPE.width = BIRD.width * 2;
 	TOP_PIPE.height = board.height;
 	TOP_PIPE.x = board.width;
+
+	// update ground properties
+	GROUND.width = board.width;
+	GROUND.height = board.height * 0.2;
+	GROUND.x = 0;
+	GROUND.y = board.height - GROUND.height;
 
 	// update others
 	gravity = board.width * 0.0005;
