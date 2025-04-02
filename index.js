@@ -135,9 +135,9 @@ function updateFrames() {
 		}
 
 		// detect if the game is over
-		if (detectCollision(BIRD, pipe)) {
-			gameOver = true;
-		}
+		// if (detectCollision(BIRD, pipe)) {
+		// 	gameOver = true;
+		// }
 	}
 
 	// draw the ground
@@ -154,15 +154,14 @@ function setBirdBoundary() {
 	let top = 0;
 	if (BIRD.y <= top) {
 		BIRD.y = top;
-		birdVelocity = 0; 
+		birdVelocity = 0.01; 
 	}
 	// Prevent the bird from going below the screen
 	let bottom = board.height - BIRD.height - GROUND.height;
 	if (BIRD.y >= bottom) {
 		BIRD.y = bottom;
-		birdVelocity = 0; 
+		birdVelocity = 0.01; 
 	}
-	console.log(birdVelocity)
 }
 
 
