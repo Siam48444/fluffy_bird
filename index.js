@@ -13,8 +13,8 @@ board.height = BOARD.height;
 
 // bird
 const BIRD = {
-	width: 50,
-	height: 50,
+	width: BOARD.width * 0.06,
+	height: BOARD.width * 0.06,
 	x: BOARD.width / 5,
 	y: BOARD.height / 2.2,
 }
