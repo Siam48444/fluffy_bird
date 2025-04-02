@@ -116,8 +116,15 @@ function updateFrames() {
 	setBirdBoundary();
 
 	//draw the bird according to the gravity
-	if (birdVelocity > 0) { context.drawImage(birdDownImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); }
-	else { context.drawImage(birdUpImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); }
+	// context.fillStyle = 'yellow';
+	// context.fillRect(BIRD.x, BIRD.y, BIRD.width, BIRD.height);
+
+	if (birdVelocity > 0) { 
+		context.drawImage(birdDownImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); 
+	}
+	else { 
+		context.drawImage(birdUpImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); 
+	}
 
 	// draw the new pipes from the pipe array
 	for (let pipe of pipeArray) {
