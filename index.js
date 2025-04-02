@@ -11,8 +11,10 @@ window.addEventListener('resize', adjustBoard);
 
 // bird
 const BIRD = {};
-const birdImage = new Image(); 
-birdImage.src = './assets/images/birdUp.png';
+const birdUpImage = new Image(); 
+const birdDownImage = new Image(); 
+birdUpImage.src = './assets/images/birdUp.png';
+birdDownImage.src = './assets/images/birdDown.png';
 
 
 // pipes
@@ -85,7 +87,7 @@ function adjustBoard() {
 
 
 window.addEventListener('DOMContentLoaded', () => {
-	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); // draw the bird 
+	context.drawImage(birdDownImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); // draw the bird 
 	context.drawImage(groundImage, GROUND.x, GROUND.y, GROUND.width, GROUND.height); // draw the ground
 
 	// make the bird jump
@@ -114,7 +116,7 @@ function updateFrames() {
 	setBirdBoundary();
 
 	//draw the bird
-	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
+	context.drawImage(birdDownImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
 
 	// draw the new pipes from the pipe array
 	for (let pipe of pipeArray) {
