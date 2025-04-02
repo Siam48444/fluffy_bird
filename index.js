@@ -4,8 +4,8 @@ const context = board.getContext('2d'); // used for 2 dimensional drawing on the
 board.height = window.innerHeight; // set the initial board dimensions 
 board.width = board.height; 
 
-window.addEventListener('DOMContentLoaded', adjustBoardSize); // make the board width responsive
-window.addEventListener('resize', adjustBoardSize);
+window.addEventListener('DOMContentLoaded', adjustBoard); // make the board width responsive
+window.addEventListener('resize', adjustBoard);
 
 
 // bird
@@ -32,15 +32,16 @@ let pipeInterval = 800; // time between each pipe generation (in milliseconds)
 let pipeSpacing; // space between the pipes
 let pipeArray = []; // used to add more pipes in the game
 
-let gameOver = false;
+let gameOver = false; // track if the game is over
 
 
-// make the board width responsive
-function adjustBoardSize() {
-	// Ensure the board remains a square
+// adjust the game board and the elements
+function adjustBoard() {
+	// set the board's minimum width
 	let minSize = Math.min(window.innerWidth, window.innerHeight);
 	board.width = board.height = minSize;
 
+	// set the board's maximum width
 	let maxSize = 1111;
 	if (board.width > maxSize) {
 		board.width = board.height = maxSize;
@@ -85,16 +86,8 @@ function updateFrames() {
 	BIRD.y += birdVelocity;
 	birdVelocity += gravity; 
 
-	// Prevent the bird from going above the screen
-	if (BIRD.y < 0) {
-		BIRD.y = 0;
-		birdVelocity = 0; 
-	}
-	// Prevent the bird from going below the screen
-	if (BIRD.y > board.height - BIRD.height) {
-		BIRD.y = board.height - BIRD.height;
-		birdVelocity = 0; 
-	}
+	// prevent the bird from going outside the screen
+	setBirdBoundary();
 
 	//draw the bird
 	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
@@ -112,6 +105,23 @@ function updateFrames() {
 
 	// loop the animation
 	requestAnimationFrame(updateFrames); 
+}
+
+
+// prevent the bird from going outside the screen
+function setBirdBoundary() {
+	// Prevent the bird from going above the screen
+	let top = 0;
+	if (BIRD.y < top) {
+		BIRD.y = top;
+		birdVelocity = 0; 
+	}
+	// Prevent the bird from going below the screen
+	let bottom = board.height - BIRD.height;
+	if (BIRD.y > bottom) {
+		BIRD.y = bottom;
+		birdVelocity = 0; 
+	}
 }
 
 
