@@ -64,7 +64,7 @@ function adjustBoard() {
 
 	// update ground properties
 	GROUND.width = board.width;
-	GROUND.height = board.height * 0.1;
+	GROUND.height = board.height * 0.15;
 	GROUND.x = 0;
 	GROUND.y = board.height - GROUND.height;
 
@@ -154,11 +154,12 @@ function updateFrames() {
 	context.font = `800 ${board.width * 0.05}px Inter`;
 	context.textAlign = 'center';
 	context.fillText(score, board.width * 0.5, board.width * 0.1);
-
+	
 	// draw the game name in the bottom of the screen 
 	context.fillStyle = 'black';
 	context.font = 'Inter'; 
-	context.fillText('Fluffy Bird', board.width * 0.5, board.width * 0.98);
+	context.textAlign = 'center';
+	context.fillText('Fluffy Bird', board.width * 0.5, board.height - (GROUND.height * 0.3));
 
 	// loop the animation
 	requestAnimationFrame(updateFrames); 
