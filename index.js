@@ -1,26 +1,21 @@
 // board
 const board = document.getElementById('board');
 const context = board.getContext('2d'); // used for 2 dimensional drawing on the board
-
-// set the initial board dimensions 
-board.height = window.innerHeight;
+board.height = window.innerHeight; // set the initial board dimensions 
 board.width = board.height; 
 
-// make the board width responsive
-window.addEventListener('DOMContentLoaded', adjustBoardSize);
+window.addEventListener('DOMContentLoaded', adjustBoardSize); // make the board width responsive
 window.addEventListener('resize', adjustBoardSize);
 
 
 // bird
 const BIRD = {}
-
 const birdImage = new Image(); // fluffy bird image
 birdImage.src = './assets/images/bird.png';
 
 
 // pipes
 const TOP_PIPE = {} // the bottom pipes are generated based on this object
-
 const topPipeImage = new Image(); // pipe images
 const bottomPipeImage = new Image(); 
 topPipeImage.src = './assets/images/topPipe.png'; 
