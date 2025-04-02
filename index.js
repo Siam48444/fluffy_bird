@@ -5,7 +5,6 @@ board.height = window.innerHeight; // set the initial board dimensions
 board.width = board.height; 
 
 window.addEventListener('DOMContentLoaded', adjustBoard); // make the board width responsive
-window.addEventListener('load', adjustBoard);
 window.addEventListener('resize', adjustBoard);
 
 
@@ -77,7 +76,7 @@ function adjustBoard() {
 	gravity = board.width * 0.0005;
 	jumpVelocity = -(board.width * 0.01);
 	pipeVelocity = -(board.width * 0.005);
-	pipeSpacing = BIRD.height * 4.5;
+	pipeSpacing = BIRD.height * 3;
 	pipeInterval = board.width; 
 
 	// set the pipe interval for smaller screen
@@ -137,7 +136,7 @@ function updateFrames() {
 		// detect if the pipe is crossed
 		if (pipe.x + pipe.width < BIRD.x && !pipe.passed) {
 			pipe.passed = true
-			score += 0.5;
+			score += 0.5; // increment the score
 		}
 
 		// detect if the game is over
@@ -151,7 +150,7 @@ function updateFrames() {
 
 	// draw the score
 	context.fillStyle = 'black';
-	context.font = `${board.width * 0.05}px Inter`;
+	context.font = `800 ${board.width * 0.05}px Inter`;
 	context.textAlign = 'center';
 	context.fillText(score, board.width * 0.5, board.width * 0.1);
 
