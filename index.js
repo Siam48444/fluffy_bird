@@ -2,42 +2,24 @@
 const board = document.getElementById('board');
 const context = board.getContext('2d'); // used for 2 dimensional drawing on the board
 
-const BOARD = {
-	width: board.clientWidth,
-	height: board.clientHeight,
-}
-
-board.width = BOARD.width; // set the initial board dimensions 
-board.height = BOARD.height;
+// set the initial board dimensions 
+board.height = window.innerHeight;
+board.width = board.height; 
 
 // make the board width responsive
-if (window.innerWidth <= BOARD.width) {
-	board.width = window.innerWidth;
-	board.height = board.width;
-}
-console.log(BOARD.width)
-console.log(board.width)
+window.addEventListener('DOMContentLoaded', adjustBoardSize);
+window.addEventListener('resize', adjustBoardSize);
 
 
 // bird
-const BIRD = {
-	width: board.width * 0.06,
-	height: board.width * 0.06,
-	x: board.width / 5,
-	y: board.height / 2.2,
-}
+const BIRD = {}
 
 const birdImage = new Image(); // fluffy bird image
 birdImage.src = './assets/images/bird.png';
 
 
 // pipes
-const TOP_PIPE = {
-	width: BIRD.width * 2,
-	height: board.height,
-	x: board.width,
-	y: 0, 
-} // the bottom pipes are generated based on this object
+const TOP_PIPE = {} // the bottom pipes are generated based on this object
 
 const topPipeImage = new Image(); // pipe images
 const bottomPipeImage = new Image(); 
@@ -52,11 +34,30 @@ let jumpVelocity = -8; // velocity of the jumping bird
 
 let pipeVelocity = -5; // velocity of the moving pipes
 let pipeInterval = 800; // time between each pipe generation (in milliseconds)
-let pipeSpacing = BIRD.height * 4.5; // space between the pipes
+let pipeSpacing; // space between the pipes
 let pipeArray = []; // used to add more pipes in the game
 
 let gameOver = false;
 
+
+// make the board responsive
+function adjustBoardSize() {
+	// Ensure the board remains a square
+	let size = Math.min(window.innerWidth, window.innerHeight);
+	board.width = board.height = size;
+
+	// Recalculate bird properties
+	BIRD.width = board.width * 0.06;
+	BIRD.height = board.width * 0.06;
+	BIRD.x = board.width / 5;
+	BIRD.y = board.height / 2.2;
+
+	// Update pipe properties
+	TOP_PIPE.width = BIRD.width * 2;
+	TOP_PIPE.height = board.height;
+	TOP_PIPE.x = board.width;
+	pipeSpacing = BIRD.height * 4.5;
+}
 
 
 window.addEventListener('DOMContentLoaded', () => {
