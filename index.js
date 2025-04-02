@@ -102,6 +102,16 @@ function updateFrames() {
 		pipe.x += pipeVelocity; // move the pipes to the left
 		context.drawImage(pipe.image, pipe.x, pipe.y, pipe.width, pipe.height); // draw the pipes
 
+		// remove the old pipes that has already gone off the screen
+		if (pipe.x + pipe.width < 0) {
+			pipeArray.shift(pipe);
+		}
+
+		// detect if the pipe is crossed
+		if (pipe.x + pipe.width < BIRD.x && !pipe.passed) {
+			pipe.passed = true
+		}
+
 		// detect if the game is over
 		if (detectCollision(BIRD, pipe)) {
 			gameOver = true;
