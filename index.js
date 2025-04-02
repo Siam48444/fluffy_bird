@@ -75,7 +75,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	// start the animations
 	requestAnimationFrame(updateFrames);
-	setInterval(placePipes, pipeInterval);
+	setInterval(generatePipes, pipeInterval);
 });
 
 
@@ -131,12 +131,12 @@ function setBirdBoundary() {
 
 
 // place the pipes
-function placePipes() {
+function generatePipes() {
 	// stop the function if the game is over
 	if (gameOver) return;
 
 	// random Y positions for the pipes 
-	let randomPipeY = Math.random() * (board.height * 0.4) + board.height * 0.3; 
+	let randomPipeY = Math.random() * (board.height * 0.5) + board.height * 0.3; 
 
 	// new top pipes
 	let topPipe = {
