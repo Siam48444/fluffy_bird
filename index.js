@@ -78,8 +78,8 @@ function adjustBoard() {
 
 
 window.addEventListener('DOMContentLoaded', () => {
-	// draw the bird
-	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); 
+	context.drawImage(birdImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); // draw the bird 
+	context.drawImage(groundImage, GROUND.x, GROUND.y, GROUND.width, GROUND.height); // draw the ground
 
 	// make the bird jump
 	window.addEventListener('keydown', jumpOnKeypress);
@@ -129,6 +129,10 @@ function updateFrames() {
 			gameOver = true;
 		}
 	}
+
+
+	// draw the ground
+	context.drawImage(groundImage, GROUND.x, GROUND.y, GROUND.width, GROUND.height);
 
 	// loop the animation
 	requestAnimationFrame(updateFrames); 
