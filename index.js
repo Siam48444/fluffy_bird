@@ -42,6 +42,7 @@ let pipeArray = []; // used to add more pipes in the game
 
 let gameOver = false; // keeps track if the game is over
 let score = 0; // keeps track of the player's score
+let highScore = localStorage.getItem('highScore');
 
 
 // adjust the game board and the inner elements
