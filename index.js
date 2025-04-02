@@ -41,7 +41,8 @@ let pipeInterval; // time between each pipe generation (in milliseconds)
 let pipeSpacing; // space between the pipes
 let pipeArray = []; // used to add more pipes in the game
 
-let gameOver = false; // track if the game is over
+let gameOver = false; // keeps track if the game is over
+let score = 0; // keeps track of the player's score
 
 
 // adjust the game board and the inner elements
@@ -116,9 +117,6 @@ function updateFrames() {
 	setBirdBoundary();
 
 	//draw the bird according to the gravity
-	// context.fillStyle = 'yellow';
-	// context.fillRect(BIRD.x, BIRD.y, BIRD.width, BIRD.height);
-
 	if (birdVelocity > 0) { 
 		context.drawImage(birdDownImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); 
 	}
@@ -139,6 +137,7 @@ function updateFrames() {
 		// detect if the pipe is crossed
 		if (pipe.x + pipe.width < BIRD.x && !pipe.passed) {
 			pipe.passed = true
+			score += 0.5;
 		}
 
 		// detect if the game is over
@@ -149,6 +148,11 @@ function updateFrames() {
 
 	// draw the ground
 	context.drawImage(groundImage, GROUND.x, GROUND.y, GROUND.width, GROUND.height);
+
+	// draw the score
+	context.fillStyle = 'white';
+	context.font = 'inter';
+	context.fillText(score, board.width * 0.5, board.width * 0.05);
 
 	// loop the animation
 	requestAnimationFrame(updateFrames); 
