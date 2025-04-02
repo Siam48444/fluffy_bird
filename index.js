@@ -34,7 +34,7 @@ let birdVelocity = 0; // initial velocity of the bird
 let jumpVelocity; // velocity of the jumping bird
 
 let pipeVelocity; // velocity of the moving pipes
-let pipeInterval = 200; // time between each pipe generation (in milliseconds)
+let pipeInterval; // time between each pipe generation (in milliseconds)
 let pipeSpacing; // space between the pipes
 let pipeArray = []; // used to add more pipes in the game
 
@@ -74,6 +74,7 @@ function adjustBoard() {
 	jumpVelocity = -(board.width * 0.01);
 	pipeVelocity = -(board.width * 0.005);
 	pipeSpacing = BIRD.height * 4.5;
+	pipeInterval = board.width;
 }
 
 
@@ -125,11 +126,10 @@ function updateFrames() {
 		}
 
 		// detect if the game is over
-		// if (detectCollision(BIRD, pipe)) {
-		// 	gameOver = true;
-		// }
+		if (detectCollision(BIRD, pipe)) {
+			gameOver = true;
+		}
 	}
-
 
 	// draw the ground
 	context.drawImage(groundImage, GROUND.x, GROUND.y, GROUND.width, GROUND.height);
@@ -160,11 +160,9 @@ function setBirdBoundary() {
 function generatePipes() {
 	// stop the function if the game is over
 	if (gameOver) return;
-	console.log(pipeArray)
-
 
 	// random Y positions for the pipes 
-	let randomPipeY = Math.random() * (board.height * 0.5) + board.height * 0.3; 
+	let randomPipeY = Math.random() * (board.height * 0.3) + (board.height * 0.3) + GROUND.height; 
 
 	// new top pipes
 	let topPipe = {
