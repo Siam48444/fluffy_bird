@@ -58,7 +58,7 @@ function adjustBoard() {
 	}
 
 	// recalculate bird properties
-	BIRD.width = BIRD.height = board.width * 0.08;
+	BIRD.width = BIRD.height = board.width * 0.07;
 	BIRD.x = board.width / 5;
 	BIRD.y = (board.height / 2) - (BIRD.height * 0.5);
 
