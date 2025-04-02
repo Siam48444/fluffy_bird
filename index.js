@@ -23,11 +23,11 @@ bottomPipeImage.src = './assets/images/bottomPipe.png';
 
 
 // physics and others
-let gravity = 0.35; // gravity of the falling bird
+let gravity; // gravity of the falling bird
 let birdVelocity = 0; // initial velocity of the bird
-let jumpVelocity = -8; // velocity of the jumping bird
+let jumpVelocity; // velocity of the jumping bird
 
-let pipeVelocity = -5; // velocity of the moving pipes
+let pipeVelocity; // velocity of the moving pipes
 let pipeInterval = 800; // time between each pipe generation (in milliseconds)
 let pipeSpacing; // space between the pipes
 let pipeArray = []; // used to add more pipes in the game
@@ -47,15 +47,20 @@ function adjustBoard() {
 		board.width = board.height = maxSize;
 	}
 
-	// Recalculate bird properties
+	// recalculate bird properties
 	BIRD.width = BIRD.height = board.width * 0.06;
 	BIRD.x = board.width / 5;
 	BIRD.y = (board.height / 2) - (BIRD.height * 0.5);
 
-	// Update pipe properties
+	// update pipe properties
 	TOP_PIPE.width = BIRD.width * 2;
 	TOP_PIPE.height = board.height;
 	TOP_PIPE.x = board.width;
+
+	// update others
+	gravity = board.width * 0.0005;
+	jumpVelocity = -(board.width * 0.01);
+	pipeVelocity = -(board.width * 0.005);
 	pipeSpacing = BIRD.height * 4.5;
 }
 
