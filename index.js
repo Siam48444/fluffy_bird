@@ -12,8 +12,8 @@ window.addEventListener('resize', adjustBoard);
 const BIRD = {};
 const birdUpImage = new Image(); 
 const birdDownImage = new Image(); 
-birdUpImage.src = './assets/images/birdUp.png';
-birdDownImage.src = './assets/images/birdDown.png';
+birdUpImage.src = './assets/images/bird.png';
+birdDownImage.src = './assets/images/bird.png';
 
 
 // pipes
@@ -58,7 +58,7 @@ function adjustBoard() {
 	}
 
 	// recalculate bird properties
-	BIRD.width = BIRD.height = board.width * 0.1;
+	BIRD.width = BIRD.height = board.width * 0.08;
 	BIRD.x = board.width / 5;
 	BIRD.y = (board.height / 2) - (BIRD.height * 0.5);
 
