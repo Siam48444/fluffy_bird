@@ -116,7 +116,8 @@ function updateFrames() {
 	setBirdBoundary();
 
 	//draw the bird
-	context.drawImage(birdDownImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height);
+	if (birdVelocity > 0) { context.drawImage(birdDownImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); }
+	else { context.drawImage(birdUpImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); }
 
 	// draw the new pipes from the pipe array
 	for (let pipe of pipeArray) {
@@ -151,13 +152,13 @@ function updateFrames() {
 function setBirdBoundary() {
 	// Prevent the bird from going above the screen
 	let top = 0;
-	if (BIRD.y < top) {
+	if (BIRD.y <= top) {
 		BIRD.y = top;
 		birdVelocity = 0; 
 	}
 	// Prevent the bird from going below the screen
 	let bottom = board.height - BIRD.height - GROUND.height;
-	if (BIRD.y > bottom) {
+	if (BIRD.y >= bottom) {
 		BIRD.y = bottom;
 		birdVelocity = 0; 
 	}
