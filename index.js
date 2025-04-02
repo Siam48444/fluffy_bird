@@ -82,7 +82,7 @@ function adjustBoard() {
 	// set the pipe interval for smaller screen
 	if (board.width < 777) { pipeInterval = board.width * 1.7; }
 	if (board.width < 444) { pipeInterval = board.width * 2.7; }
-	if (board.width < 222) { pipeInterval = board.width * 6; }
+	if (board.width < 333) { pipeInterval = board.width * 5; }
 }
 
 
@@ -162,6 +162,7 @@ function setBirdBoundary() {
 		BIRD.y = bottom;
 		birdVelocity = 0; 
 	}
+	console.log(birdVelocity)
 }
 
 
