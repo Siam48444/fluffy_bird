@@ -9,17 +9,23 @@ window.addEventListener('resize', adjustBoard);
 
 
 // bird
-const BIRD = {}
+const BIRD = {};
 const birdImage = new Image(); // fluffy bird image
 birdImage.src = './assets/images/bird.png';
 
 
 // pipes
-const TOP_PIPE = {} // the bottom pipes are generated based on this object
+const TOP_PIPE = {}; // the bottom pipes are generated based on this object
 const topPipeImage = new Image(); // pipe images
 const bottomPipeImage = new Image(); 
 topPipeImage.src = './assets/images/topPipe.png'; 
 bottomPipeImage.src = './assets/images/bottomPipe.png';	
+
+
+// ground
+const GROUND = {};
+const groundImage = new Image();
+groundImage.src = './assets/images/ground.png';
 
 
 // physics and others
