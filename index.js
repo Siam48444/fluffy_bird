@@ -12,7 +12,7 @@ window.addEventListener('resize', adjustBoard);
 // bird
 const BIRD = {};
 const birdImage = new Image(); 
-birdImage.src = './assets/images/bird.png';
+birdImage.src = './assets/images/birdUp.png';
 
 
 // pipes
@@ -55,7 +55,7 @@ function adjustBoard() {
 	}
 
 	// recalculate bird properties
-	BIRD.width = BIRD.height = board.width * 0.06;
+	BIRD.width = BIRD.height = board.width * 0.08;
 	BIRD.x = board.width / 5;
 	BIRD.y = (board.height / 2) - (BIRD.height * 0.5);
 
@@ -66,7 +66,7 @@ function adjustBoard() {
 	GROUND.y = board.height - GROUND.height;
 
 	// update pipe properties
-	TOP_PIPE.width = BIRD.width * 2;
+	TOP_PIPE.width = board.width * 0.1;
 	TOP_PIPE.height = board.height - GROUND.height;
 	TOP_PIPE.x = board.width;
 
@@ -79,7 +79,8 @@ function adjustBoard() {
 
 	// set the pipe interval for smaller screen
 	if (board.width < 777) { pipeInterval = board.width * 1.7; }
-	if (board.width < 444) { pipeInterval = board.width * 2.5; }
+	if (board.width < 444) { pipeInterval = board.width * 2.7; }
+	if (board.width < 222) { pipeInterval = board.width * 6; }
 }
 
 
