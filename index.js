@@ -103,7 +103,7 @@ function updateFrames() {
 		context.drawImage(pipe.image, pipe.x, pipe.y, pipe.width, pipe.height); // draw the pipes
 
 		// remove the old pipes that has already gone off the screen
-		if (pipe.x + pipe.width < 0) {
+		if (pipe.x + pipe.width < -board.width) {
 			pipeArray.shift(pipe);
 		}
 
@@ -144,6 +144,8 @@ function setBirdBoundary() {
 function generatePipes() {
 	// stop the function if the game is over
 	if (gameOver) return;
+	console.log(pipeArray)
+
 
 	// random Y positions for the pipes 
 	let randomPipeY = Math.random() * (board.height * 0.5) + board.height * 0.3; 
