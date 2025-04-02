@@ -10,13 +10,21 @@ const BOARD = {
 board.width = BOARD.width; // set the initial board dimensions 
 board.height = BOARD.height;
 
+// make the board width responsive
+if (window.innerWidth <= BOARD.width) {
+	board.width = window.innerWidth;
+	board.height = board.width;
+}
+console.log(BOARD.width)
+console.log(board.width)
+
 
 // bird
 const BIRD = {
-	width: BOARD.width * 0.06,
-	height: BOARD.width * 0.06,
-	x: BOARD.width / 5,
-	y: BOARD.height / 2.2,
+	width: board.width * 0.06,
+	height: board.width * 0.06,
+	x: board.width / 5,
+	y: board.height / 2.2,
 }
 
 const birdImage = new Image(); // fluffy bird image
@@ -26,8 +34,8 @@ birdImage.src = './assets/images/bird.png';
 // pipes
 const TOP_PIPE = {
 	width: BIRD.width * 2,
-	height: BOARD.height,
-	x: BOARD.width,
+	height: board.height,
+	x: board.width,
 	y: 0, 
 } // the bottom pipes are generated based on this object
 
@@ -83,8 +91,8 @@ function updateFrames() {
 		birdVelocity = 0; 
 	}
 	// Prevent the bird from going below the screen
-	if (BIRD.y > BOARD.height - BIRD.height) {
-		BIRD.y = BOARD.height - BIRD.height;
+	if (BIRD.y > board.height - BIRD.height) {
+		BIRD.y = board.height - BIRD.height;
 		birdVelocity = 0; 
 	}
 
@@ -113,7 +121,7 @@ function placePipes() {
 	if (gameOver) return;
 
 	// random Y positions for the pipes 
-	let randomPipeY = Math.random() * (BOARD.height * 0.4) + BOARD.height * 0.3; 
+	let randomPipeY = Math.random() * (board.height * 0.4) + board.height * 0.3; 
 
 	// new top pipes
 	let topPipe = {
