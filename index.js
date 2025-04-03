@@ -100,7 +100,7 @@ function updateBoard() {
 }
 
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
 	// load the images
 	birdDownImage.onload = () => {
 		context.drawImage(birdDownImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); 
@@ -119,7 +119,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 	restartButton.addEventListener('click', () => {
-	    gameOverPopup.classList.remove('popupOpen'); // Hide the popup
 	    startGame(); // Restart the game
 	});
 
@@ -134,20 +133,24 @@ function startGame() {
     gameOver = false;
     score = 0;
     birdVelocity = 0; // Stop the bird from falling immediately
-    BIRD.x = board.width / 5;
-    BIRD.y = (board.height / 2) - (BIRD.height * 0.5);
 
     // Clear previous pipes
     pipeArray = [];
 
-    // Reset gravity and velocities
-    gravity = board.width * 0.0005;
-    jumpVelocity = -(board.width * 0.01);
+    updateBoard();
 
-	clearInterval(pipeGenerationInterval);
-	pipeGenerationInterval = setInterval(generatePipes, pipeInterval);
+    gameOverPopup.classList.remove('popupOpen'); // Hide the popup
 
-	requestAnimationFrame(updateFrames);
+	// Clear any existing interval
+    if (pipeGenerationInterval) {
+        clearInterval(pipeGenerationInterval);
+    }
+
+	// Start new pipe generation
+    pipeGenerationInterval = setInterval(generatePipes, pipeInterval);
+    
+    // Start the animation loop
+    updateFrames();
 }
 
 
