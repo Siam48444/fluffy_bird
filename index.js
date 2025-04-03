@@ -44,7 +44,9 @@ let gameOver = false; // keeps track if the game is over
 let score = 0; // keeps track of the player's score
 let highScore = localStorage.getItem('highScore'); // get the saved high score
 
+// some colors
 const clrGameName = '#6c8a2b';
+const clrScore = '#ffffff';
 
 
 // adjust the game board and the inner elements
@@ -79,7 +81,7 @@ function adjustBoard() {
 	gravity = board.width * 0.0005;
 	jumpVelocity = -(board.width * 0.01);
 	pipeVelocity = -(board.width * 0.005);
-	pipeSpacing = BIRD.height * 3;
+	pipeSpacing = BIRD.height * 3.3;
 	pipeInterval = board.width; 
 
 	// set the pipe interval for smaller screen
@@ -253,15 +255,23 @@ function detectCollision(bird, pipe) {
 
 // the scores and other texts
 function addText() {
+	// score text properties
+	const scoreX = board.width * 0.5;
+	const scoreY = board.width * 0.1;
+	const scoreFontSize = board.width * 0.06;
+
 	// draw the score
-	context.fillStyle = 'black';
-	context.font = `800 ${board.width * 0.05}px Inter`;
+	context.fillStyle = clrScore;
+	context.font = `800 ${scoreFontSize}px Inter`;
 	context.textAlign = 'center';
-	context.fillText(score, board.width * 0.5, board.width * 0.1);
+	context.lineWidth = board.width * 0.005;
+	context.strokeStyle = 'black';
+	context.strokeText(score, scoreX, scoreY);
+	context.fillText(score, scoreX, scoreY);
 	
 	// draw the game name in the bottom of the screen 
 	context.fillStyle = clrGameName;
-	context.font = `500 ${board.width * 0.03}px Inter`; 
+	context.font = `500 ${board.width * 0.04}px Inter`; 
 	context.textAlign = 'center';
 	context.fillText('Fluffy Bird', board.width * 0.5, board.height - (GROUND.height * 0.3));
 }
