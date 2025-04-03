@@ -4,7 +4,7 @@ const context = board.getContext('2d');
 board.height = window.innerHeight; // set the initial board dimensions 
 board.width = board.height; 
 
-window.addEventListener('DOMContentLoaded', updateBoard); // make the board width responsive
+window.addEventListener('load', updateBoard); // make the board width responsive
 window.addEventListener('resize', updateBoard);
 
 
@@ -119,6 +119,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	restartButton.addEventListener('click', () => {
 		gameOver = false;
+		gameOverPopup.classList.remove('popupOpen');
 		startGame();	
 	});
 
@@ -130,12 +131,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // start the game animations
 function startGame() {
-	gameOverPopup.classList.remove('popupOpen');
 	pipeArray = [];
 	gravity = board.width * 0.0005;
 	jumpVelocity = -(board.width * 0.01);
 
+	BIRD.x = board.width / 5;
+	BIRD.y = (board.height / 2) - (BIRD.height * 0.5);
+
 	requestAnimationFrame(updateFrames);
+	clearInterval(generatePipes);
 	setInterval(generatePipes, pipeInterval);
 }
 
