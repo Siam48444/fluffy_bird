@@ -21,14 +21,16 @@
 }
 
 .gameOverPopup {
-	background: #ffffff;
 	position: absolute;
 	inset: 0;
+	background-color: #ffffff;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
 .popup {
-	background-color: #000;
+	background-color: #999;
+	width: 100vmin;
+	aspect-ratio: 1;
 }

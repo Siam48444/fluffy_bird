@@ -30,6 +30,11 @@ const groundImage = new Image();
 groundImage.src = './assets/images/ground.png';
 
 
+// popup
+const gameOverPopup = document.getElementById('gameOverPopup');
+const popup = document.getElementById('popup');
+
+
 // physics and others
 let gravity; // gravity of the falling bird
 let birdVelocity = 0; // initial velocity of the bird
