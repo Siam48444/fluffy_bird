@@ -106,7 +106,22 @@ window.addEventListener('DOMContentLoaded', () => {
 // update the frames
 function updateFrames() {
 	// stop the function if the game is over
-	if (gameOver) return;
+	if (gameOver) {
+		BIRD.y += birdVelocity;
+		birdVelocity += gravity;
+
+		// make the bird fall down if collided
+		if (BIRD.y + BIRD.height >= board.height - GROUND.height) {
+	        return;
+   		}
+   		else {
+   			// draw the ground
+			context.drawImage(groundImage, GROUND.x, GROUND.y, GROUND.width, GROUND.height);
+
+			// loop the animation
+			requestAnimationFrame(updateFrames); 
+   		}
+	}
 
 	// Clear previous frame
 	context.clearRect(0, 0, board.width, board.height); 
@@ -117,10 +132,8 @@ function updateFrames() {
 	}
 
 	// update the bird velocity using the gravity
-	if (!gameOver) {
-		BIRD.y += birdVelocity;
-		birdVelocity += gravity; 
-	}
+	BIRD.y += birdVelocity;
+	birdVelocity += gravity; 
 
 	// prevent the bird from going outside the screen
 	setBirdBoundary(); 
@@ -140,7 +153,7 @@ function updateFrames() {
 	addText();
 
 	// loop the animation
-	requestAnimationFrame(updateFrames); 
+	requestAnimationFrame(updateFrames);	
 }
 
 
@@ -179,13 +192,7 @@ function placePipes(pipe) {
 
 	// detect if the game is over
 	if (detectCollision(BIRD, pipe)) {
-		BIRD.y += birdVelocity;
-		birdVelocity += gravity * 5;
-
-		// make the bird fall down if collided
-		if (BIRD.y + BIRD.height >= board.height - GROUND.height) {
-			gameOver = true;
-		}
+		gameOver = true;
 	}
 }
 
