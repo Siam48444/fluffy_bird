@@ -114,13 +114,13 @@ window.addEventListener('load', () => {
 		}
 	}); // jump if mouse is clicked
 
-
 	restartButton.addEventListener('click', () => {
 		gameOverPopup.classList.remove('popupOpen'); // Hide the popup
 		currentScoreSpan.innerText = 0;
 	    startGame(); // Restart the game
 	});
 
+	// start the game
 	startGame();
 });
 

@@ -97,12 +97,12 @@
 
 .restartButton {
     background-color: #d1a354;
-    color: white;
     border: none;
-    padding: 1em;
+    padding: clamp(0.8rem, 1.5vmin, 1.5rem);
     font-family: 'Inter';
     font-size: clamp(0.8rem, 2vmin, 1.5rem);
-    font-weight: bold;
+    color: white;
+    font-weight: normal;
     cursor: pointer;
     width: 100%;
     text-align: center;
