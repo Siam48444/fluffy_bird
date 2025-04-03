@@ -23,7 +23,6 @@
 .gameOverPopup {
 	position: absolute;
 	inset: 0;
-	background-color: transparent;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -37,9 +36,15 @@
 	aspect-ratio: 1;
 	border: solid #d1a354 0.4vmin;
 	border-radius: 1vmin;
+	padding: 2vmin;
 }
 
 .popupOpen {
 	pointer-events: all;
 	opacity: 1;
+}
+
+.scores {
+	display: grid;
+	grid-template-columns: 1fr 0.3fr 1fr
 }

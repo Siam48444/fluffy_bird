@@ -64,7 +64,7 @@ function adjustBoard() {
 	}
 
 	// update the popup size and position
-    popup.style.width = `${board.width / 2}px`;
+    popup.style.width = `${board.width * 0.6}px`;
 
 	// recalculate bird properties
 	BIRD.width = BIRD.height = board.width * 0.06;
