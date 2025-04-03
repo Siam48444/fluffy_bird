@@ -106,7 +106,6 @@ window.addEventListener('load', () => {
 	context.drawImage(groundImage, GROUND.x, GROUND.y, GROUND.width, GROUND.height); 
 
 	// make the bird jump
-	window.addEventListener('keydown', jumpBird);
 	window.addEventListener('click', () => { 
 		if (!gameOver) {
 			birdVelocity = jumpVelocity;
@@ -130,8 +129,6 @@ function startGame() {
     gameOver = false;
     score = 0;
     birdVelocity = jumpVelocity;
-
-    // Clear previous pipes
     pipeArray = [];
 
     // reset the board
@@ -268,23 +265,6 @@ function generatePipes() {
 	}
 
 	pipeArray.push(topPipe, bottomPipe); // Add both pipes at the same time
-}
-
-
-// make the bird jump on key-press
-function jumpBird(e) {
-	if (gameOver) return;
-
-	// jump if any key is pressed
-	if ( 
-		e.code === 'Space' || 
-		e.code === 'KeyW' || 
-		e.code === 'ArrowUp' ||
-		e.code === 'NumpadEnter' ||
-		e.code === 'Enter'
-	) {
-		birdVelocity = jumpVelocity;
-	}
 }
 
 
