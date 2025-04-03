@@ -102,12 +102,8 @@ function updateBoard() {
 
 window.addEventListener('load', () => {
 	// load the images
-	birdDownImage.onload = () => {
-		context.drawImage(birdDownImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); 
-	}
-	groundImage.onload = () => {
-		context.drawImage(groundImage, GROUND.x, GROUND.y, GROUND.width, GROUND.height); 
-	}
+	context.drawImage(birdDownImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); 
+	context.drawImage(groundImage, GROUND.x, GROUND.y, GROUND.width, GROUND.height); 
 
 	// make the bird jump
 	window.addEventListener('keydown', jumpBird);
@@ -123,7 +119,6 @@ window.addEventListener('load', () => {
 		currentScoreSpan.innerText = 0;
 	    startGame(); // Restart the game
 	});
-
 
 	startGame();
 });
