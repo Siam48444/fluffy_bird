@@ -235,9 +235,9 @@ function placePipes(pipe) {
 	}
 
 	// detect if the game is over
-	// if (detectCollision(BIRD, pipe)) {
-	// 	gameOver = true;
-	// }
+	if (detectCollision(BIRD, pipe)) {
+		gameOver = true;
+	}
 }
 
 
