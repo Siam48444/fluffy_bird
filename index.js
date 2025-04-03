@@ -325,11 +325,8 @@ function addText() {
 	context.fillText(score, scoreX, scoreY);
 	
 	// draw the game name in the bottom of the screen 
-	context.fillStyle = '#e665e4';
-	context.font = `500 ${board.width * 0.04}px Inter`; 
+	context.fillStyle = '#d636d9';
+	context.font = `800 ${board.width * 0.03}px Inter`; 
 	context.textAlign = 'center';
-	context.lineWidth = board.width * 0.001;
-	context.strokeStyle = '#d636d9';
-	context.strokeText('Fluffy Bird', nameX, nameY);
 	context.fillText('Fluffy Bird', nameX, nameY);
 }

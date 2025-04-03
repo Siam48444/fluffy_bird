@@ -34,7 +34,7 @@
 }
 
 .popup {
-	background-color: #ded995;
+	background-color: #e8cabc;
 	width: 30%;
 	aspect-ratio: 1;
 	padding: 3vmin;
@@ -94,7 +94,7 @@
 }
 
 .restartButton {
-    background-color: #d1a354;
+    background-color: #de3ae0;
     border: none;
     padding: clamp(0.6rem, 0.5vmin, 1rem);
     font-family: 'Inter';
@@ -107,5 +107,5 @@
 }
 
 .restartButton:hover {
-    background-color: #73bf2c;
+    background-color: #e565e5;
 }
