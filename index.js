@@ -99,7 +99,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	// make the bird jump
 	window.addEventListener('keydown', jumpOnKeypress);
-	window.addEventListener('click', () => { birdVelocity = jumpVelocity }); // jump if mouse is clicked
+	window.addEventListener('click', () => { 
+		if (!gameOver) {
+			birdVelocity = jumpVelocity;
+		}
+	}); // jump if mouse is clicked
 
 	// start the animations
 	requestAnimationFrame(updateFrames);
