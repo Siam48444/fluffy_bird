@@ -44,9 +44,6 @@ let gameOver = false; // keeps track if the game is over
 let score = 0; // keeps track of the player's score
 let highScore = localStorage.getItem('highScore'); // get the saved high score
 
-// some colors
-const clrGameName = '#6c8a2b';
-const clrScore = '#ffffff';
 
 
 // adjust the game board and the inner elements
@@ -260,8 +257,13 @@ function addText() {
 	const scoreY = board.width * 0.1;
 	const scoreFontSize = board.width * 0.06;
 
+	// game name text properties
+	const nameX = board.width * 0.5;
+	const nameY = board.height - GROUND.height * 0.3;
+	const nameFontSize = board.width * 0.06;
+
 	// draw the score
-	context.fillStyle = clrScore;
+	context.fillStyle = '#ffffff';
 	context.font = `800 ${scoreFontSize}px Inter`;
 	context.textAlign = 'center';
 	context.lineWidth = board.width * 0.005;
@@ -270,8 +272,11 @@ function addText() {
 	context.fillText(score, scoreX, scoreY);
 	
 	// draw the game name in the bottom of the screen 
-	context.fillStyle = clrGameName;
+	context.fillStyle = '#ffffff';
 	context.font = `500 ${board.width * 0.04}px Inter`; 
 	context.textAlign = 'center';
-	context.fillText('Fluffy Bird', board.width * 0.5, board.height - (GROUND.height * 0.3));
+	context.lineWidth = board.width * 0.005;
+	context.strokeStyle = '#a49b44';
+	context.strokeText('Fluffy Bird', nameX, nameY);
+	context.fillText('Fluffy Bird', nameX, nameY);
 }
