@@ -154,15 +154,14 @@ function updateFrames() {
 function setBirdBoundary() {
 	// Prevent the bird from going above the screen
 	let top = 0;
-	if (BIRD.y <= top) {
+	if (BIRD.y < top) {
 		BIRD.y = top;
 		birdVelocity = 0.01; 
 	}
-	// Prevent the bird from going below the screen
+	// Prevent the bird from going below the screen (end the game here)
 	let bottom = board.height - BIRD.height - GROUND.height;
-	if (BIRD.y >= bottom) {
-		BIRD.y = bottom;
-		birdVelocity = 0.01; 
+	if (BIRD.y > bottom) {
+		gameOver = true;
 	}
 }
 
