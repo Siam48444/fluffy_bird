@@ -110,10 +110,16 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 	}); // jump if mouse is clicked
 
-	// start the animations
+	// start the game
+	startGame();
+});
+
+
+// start the game animations
+function startGame() {
 	requestAnimationFrame(updateFrames);
 	setInterval(generatePipes, pipeInterval);
-});
+}
 
 
 // update the frames
