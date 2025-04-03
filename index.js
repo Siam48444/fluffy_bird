@@ -107,6 +107,7 @@ window.addEventListener('load', () => {
 	context.drawImage(groundImage, GROUND.x, GROUND.y, GROUND.width, GROUND.height); 
 
 	// make the bird jump
+	window.addEventListener('keydown', jump);
 	window.addEventListener('click', () => { 
 		if (!gameOver) {
 			birdVelocity = jumpVelocity;
@@ -282,6 +283,21 @@ function detectCollision(bird, pipe) {
         bird.y + bird.height > pipe.y &&
         bird.y < pipe.y + pipe.height 
 	);
+}
+
+
+//jump the bird
+function jump(e) {
+	if (gameOver) return;
+	if (
+		e.code === 'Space' ||
+		e.code === 'KeyW' ||
+		e.code === 'ArrowUp' ||
+		e.code === 'Enter' ||
+		e.code === 'NumpadEnter'
+	) {
+		birdVelocity = jumpVelocity; 
+	}
 }
 
 
