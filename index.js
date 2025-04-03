@@ -44,6 +44,7 @@ let birdVelocity = 0; // initial velocity of the bird
 let jumpVelocity; // velocity of the jumping bird
 
 let pipeVelocity; // velocity of the moving pipes
+let pipeGenerationInterval; // Store interval reference
 let pipeInterval; // time between each pipe generation (in milliseconds)
 let pipeSpacing; // space between the pipes
 let pipeArray = []; // used to add more pipes in the game
@@ -118,29 +119,35 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 	restartButton.addEventListener('click', () => {
-		gameOver = false;
-		gameOverPopup.classList.remove('popupOpen');
-		startGame();	
+	    gameOverPopup.classList.remove('popupOpen'); // Hide the popup
+	    startGame(); // Restart the game
 	});
 
 
 	startGame();
-
 });
 
 
 // start the game animations
 function startGame() {
-	pipeArray = [];
-	gravity = board.width * 0.0005;
-	jumpVelocity = -(board.width * 0.01);
+	// Reset game state
+    gameOver = false;
+    score = 0;
+    birdVelocity = 0; // Stop the bird from falling immediately
+    BIRD.x = board.width / 5;
+    BIRD.y = (board.height / 2) - (BIRD.height * 0.5);
 
-	BIRD.x = board.width / 5;
-	BIRD.y = (board.height / 2) - (BIRD.height * 0.5);
+    // Clear previous pipes
+    pipeArray = [];
+
+    // Reset gravity and velocities
+    gravity = board.width * 0.0005;
+    jumpVelocity = -(board.width * 0.01);
+
+	clearInterval(pipeGenerationInterval);
+	pipeGenerationInterval = setInterval(generatePipes, pipeInterval);
 
 	requestAnimationFrame(updateFrames);
-	clearInterval(generatePipes);
-	setInterval(generatePipes, pipeInterval);
 }
 
 
