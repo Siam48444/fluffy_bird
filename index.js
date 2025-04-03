@@ -4,8 +4,8 @@ const context = board.getContext('2d');
 board.height = window.innerHeight; // set the initial board dimensions 
 board.width = board.height; 
 
-window.addEventListener('DOMContentLoaded', adjustBoard); // make the board width responsive
-window.addEventListener('resize', adjustBoard);
+window.addEventListener('DOMContentLoaded', updateBoard); // make the board width responsive
+window.addEventListener('resize', updateBoard);
 
 
 // bird
@@ -54,7 +54,7 @@ let highScore = localStorage.getItem('highScore'); // get the saved high score
 
 
 // adjust the game board and the inner elements
-function adjustBoard() {
+function updateBoard() {
 	// set the board's minimum width
 	let minSize = Math.min(window.innerWidth, window.innerHeight);
 	board.width = board.height = minSize;
