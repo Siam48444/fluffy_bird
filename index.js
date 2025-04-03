@@ -65,7 +65,6 @@ function adjustBoard() {
 
 	// update the popup size and position
     popup.style.width = `${board.width / 2}px`;
-    popup.style.left = (window.innerWidth - board.width) / 2 + 'px';
 
 	// recalculate bird properties
 	BIRD.width = BIRD.height = board.width * 0.06;
@@ -108,14 +107,6 @@ window.addEventListener('DOMContentLoaded', () => {
 			birdVelocity = jumpVelocity;
 		}
 	}); // jump if mouse is clicked
-
-	// open the popup if the game is over 
-	// if (gameOver) {
-	// 	gameOverPopup.classList.add('popupOpen');
-	// }
-	// else {
-	// 	gameOverPopup.classList.remove('popupOpen');
-	// }
 
 	// start the animations
 	requestAnimationFrame(updateFrames);
