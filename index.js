@@ -33,6 +33,8 @@ groundImage.src = './assets/images/ground.png';
 // popup
 const gameOverPopup = document.getElementById('gameOverPopup');
 const popup = document.getElementById('popup');
+const highScoreSpan = document.getElementById('highScoreSpan');
+const currentScoreSpan = document.getElementById('currentScoreSpan');
 
 
 // physics and others
