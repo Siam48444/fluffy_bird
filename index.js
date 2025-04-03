@@ -110,7 +110,7 @@ window.addEventListener('load', () => {
 	}
 
 	// make the bird jump
-	window.addEventListener('keydown', jumpOnKeypress);
+	window.addEventListener('keydown', jumpBird);
 	window.addEventListener('click', () => { 
 		if (!gameOver) {
 			birdVelocity = jumpVelocity;
@@ -277,7 +277,7 @@ function generatePipes() {
 
 
 // make the bird jump on key-press
-function jumpOnKeypress(e) {
+function jumpBird(e) {
 	if (gameOver) return;
 
 	// jump if any key is pressed
