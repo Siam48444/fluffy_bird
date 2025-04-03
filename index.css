@@ -34,10 +34,11 @@
 }
 
 .popup {
-	background-color: #e8cabc;
+	background-color: #d4d4d4;
 	width: 30%;
 	aspect-ratio: 1;
 	padding: 3vmin;
+	border: solid 0.2vmin black;
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -94,7 +95,7 @@
 }
 
 .restartButton {
-    background-color: #de3ae0;
+    background-color: #000000;
     border: none;
     padding: clamp(0.6rem, 0.5vmin, 1rem);
     font-family: 'Inter';
@@ -104,8 +105,4 @@
     cursor: pointer;
     width: 100%;
     text-align: center;
-}
-
-.restartButton:hover {
-    background-color: #e565e5;
 }
