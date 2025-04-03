@@ -51,7 +51,7 @@ let pipeArray = []; // used to add more pipes in the game
 
 let gameOver = false; // keeps track if the game is over
 let score = 0; // keeps track of the player's score
-let highScore = localStorage.getItem('highScore') || 0; // get the saved high score
+let highScore = 0; // get the saved high score
 
 
 
@@ -113,8 +113,6 @@ window.addEventListener('load', () => {
 	}); 
 
 	restartButton.addEventListener('click', () => {
-		gameOverPopup.classList.remove('popupOpen'); // Hide the popup
-		currentScoreSpan.innerText = 0;
 	    startGame(); // Restart the game
 	});
 
@@ -130,6 +128,12 @@ function startGame() {
     score = 0;
     birdVelocity = jumpVelocity;
     pipeArray = [];
+
+    gameOverPopup.classList.remove('popupOpen'); // Hide the popup
+	currentScoreSpan.innerText = 0;
+	
+	// highScore = ;
+	highScoreSpan.innerText = localStorage.getItem('highScore');
 
     // reset the board
     updateBoard();
@@ -232,9 +236,9 @@ function placePipes(pipe) {
 	}
 
 	// detect if the game is over
-	if (detectCollision(BIRD, pipe)) {
-		gameOver = true;
-	}
+	// if (detectCollision(BIRD, pipe)) {
+	// 	gameOver = true;
+	// }
 }
 
 
