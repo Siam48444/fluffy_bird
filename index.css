@@ -32,10 +32,11 @@
 }
 
 .popup {
-	background-color: #999;
+	background-color: #ded995;
 	width: 30%;
 	aspect-ratio: 1;
-	border: solid black 0.1em;
+	border: solid #d1a354 0.4vmin;
+	border-radius: 1vmin;
 }
 
 .popupOpen {
