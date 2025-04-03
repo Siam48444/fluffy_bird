@@ -256,7 +256,6 @@ function generatePipes() {
 		image: topPipeImage, 
 		passed: false,
 	}
-	pipeArray.push(topPipe); // add the new pipe
 
 	// new bottom pipes
 	let bottomPipe = {
@@ -267,7 +266,8 @@ function generatePipes() {
 		image: bottomPipeImage, 
 		passed: false,
 	}
-	pipeArray.push(bottomPipe); // add the new pipe
+
+	pipeArray.push(topPipe, bottomPipe); // Add both pipes at the same time
 }
 
 
