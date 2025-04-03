@@ -44,7 +44,7 @@ let birdVelocity = 0; // initial velocity of the bird
 let jumpVelocity; // velocity of the jumping bird
 
 let pipeVelocity; // velocity of the moving pipes
-let pipeGenerationInterval; // Store interval reference
+let pipeGenerationInterval; // store interval reference
 let pipeInterval; // time between each pipe generation (in milliseconds)
 let pipeSpacing; // space between the pipes
 let pipeArray = []; // used to add more pipes in the game
@@ -134,7 +134,7 @@ function startGame() {
 	// Reset game state
     gameOver = false;
     score = 0;
-    birdVelocity = 0; // Stop the bird from falling immediately
+    birdVelocity = jumpVelocity;
 
     // Clear previous pipes
     pipeArray = [];
