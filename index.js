@@ -108,11 +108,22 @@ function updateFrames() {
 	// stop the function if the game is over
 	if (gameOver) return;
 
-	context.clearRect(0, 0, board.width, board.height); // Clear previous frame
+	// Clear previous frame
+	context.clearRect(0, 0, board.width, board.height); 
 
-	updateBirdMovement(); // update the bird movement
+	// draw the new pipes from the pipe array
+	for (let pipe of pipeArray) {
+		placePipes(pipe);
+	}
 
-	setBirdBoundary(); // prevent the bird from going outside the screen
+	// update the bird velocity using the gravity
+	if (!gameOver) {
+		BIRD.y += birdVelocity;
+		birdVelocity += gravity; 
+	}
+
+	// prevent the bird from going outside the screen
+	setBirdBoundary(); 
 
 	//draw the bird according to the gravity
 	if (birdVelocity > 0) { 
@@ -120,11 +131,6 @@ function updateFrames() {
 	}
 	else { 
 		context.drawImage(birdUpImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); 
-	}
-
-	// draw the new pipes from the pipe array
-	for (let pipe of pipeArray) {
-		placePipes(pipe);
 	}
 
 	// draw the ground
@@ -135,16 +141,6 @@ function updateFrames() {
 
 	// loop the animation
 	requestAnimationFrame(updateFrames); 
-}
-
-
-// update the bird's movement and falling
-function updateBirdMovement() {
-	// update the bird velocity using the gravity
-	if (!gameOver) {
-		BIRD.y += birdVelocity;
-		birdVelocity += gravity; 
-	}
 }
 
 
@@ -183,7 +179,13 @@ function placePipes(pipe) {
 
 	// detect if the game is over
 	if (detectCollision(BIRD, pipe)) {
-		gameOver = true;
+		BIRD.y += birdVelocity;
+		birdVelocity += gravity * 5;
+
+		// make the bird fall down if collided
+		if (BIRD.y + BIRD.height >= board.height - GROUND.height) {
+			gameOver = true;
+		}
 	}
 }
 
