@@ -114,13 +114,6 @@ function updateFrames() {
 		if (BIRD.y + BIRD.height >= board.height - GROUND.height) {
 	        return;
    		}
-   		else {
-   			// draw the ground
-			context.drawImage(groundImage, GROUND.x, GROUND.y, GROUND.width, GROUND.height);
-
-			// loop the animation
-			requestAnimationFrame(updateFrames); 
-   		}
 	}
 
 	// Clear previous frame
