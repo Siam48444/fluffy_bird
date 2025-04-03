@@ -35,6 +35,7 @@ const gameOverPopup = document.getElementById('gameOverPopup');
 const popup = document.getElementById('popup');
 const highScoreSpan = document.getElementById('highScoreSpan');
 const currentScoreSpan = document.getElementById('currentScoreSpan');
+const restartButton = document.getElementById('restartButton');
 
 
 // physics and others
@@ -99,8 +100,13 @@ function updateBoard() {
 
 
 window.addEventListener('DOMContentLoaded', () => {
-	context.drawImage(birdDownImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); // draw the bird 
-	context.drawImage(groundImage, GROUND.x, GROUND.y, GROUND.width, GROUND.height); // draw the ground
+	// load the images
+	birdDownImage.onload = () => {
+		context.drawImage(birdDownImage, BIRD.x, BIRD.y, BIRD.width, BIRD.height); 
+	}
+	groundImage.onload = () => {
+		context.drawImage(groundImage, GROUND.x, GROUND.y, GROUND.width, GROUND.height); 
+	}
 
 	// make the bird jump
 	window.addEventListener('keydown', jumpOnKeypress);
@@ -110,13 +116,25 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 	}); // jump if mouse is clicked
 
-	// start the game
+
+	restartButton.addEventListener('click', () => {
+		gameOver = false;
+		startGame();	
+	});
+
+
 	startGame();
+
 });
 
 
 // start the game animations
 function startGame() {
+	gameOverPopup.classList.remove('popupOpen');
+	pipeArray = [];
+	gravity = board.width * 0.0005;
+	jumpVelocity = -(board.width * 0.01);
+
 	requestAnimationFrame(updateFrames);
 	setInterval(generatePipes, pipeInterval);
 }
