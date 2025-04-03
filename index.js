@@ -105,6 +105,14 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 	}); // jump if mouse is clicked
 
+	// open the popup if the game is over 
+	// if (gameOver) {
+	// 	gameOverPopup.classList.add('popupOpen');
+	// }
+	// else {
+	// 	gameOverPopup.classList.remove('popupOpen');
+	// }
+
 	// start the animations
 	requestAnimationFrame(updateFrames);
 	setInterval(generatePipes, pipeInterval);
@@ -121,6 +129,7 @@ function updateFrames() {
 
 		// make the bird fall down if collided
 		if (BIRD.y + BIRD.height > board.height - GROUND.height) {
+			gameOverPopup.classList.add('popupOpen');
 	        return;
    		}
 	}

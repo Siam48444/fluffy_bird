@@ -23,7 +23,7 @@
 .gameOverPopup {
 	position: absolute;
 	inset: 0;
-	background-color: #ffffff;
+	background-color: transparent;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -33,6 +33,11 @@
 
 .popup {
 	background-color: #999;
-	width: 100vmin;
+	width: 30%;
 	aspect-ratio: 1;
+}
+
+.popupOpen {
+	pointer-events: all;
+	opacity: 1;
 }
