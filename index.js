@@ -52,7 +52,6 @@ let pipeArray = []; // used to add more pipes in the game
 let gameOver = false; // keeps track if the game is over
 let score = 0; // keeps track of the player's score
 let highScore = localStorage.getItem('highScore'); // get the saved high score
-let animationFrameId; // Store the ID of the animation frame
 
 
 
@@ -112,7 +111,7 @@ window.addEventListener('load', () => {
 		if (!gameOver) {
 			birdVelocity = jumpVelocity;
 		}
-	}); // jump if mouse is clicked
+	}); 
 
 	restartButton.addEventListener('click', () => {
 		gameOverPopup.classList.remove('popupOpen'); // Hide the popup
@@ -147,7 +146,7 @@ function startGame() {
     pipeGenerationInterval = setInterval(generatePipes, pipeInterval);
     
     // Start the animation loop
-    requestAnimationFrame(updateFrames);
+	requestAnimationFrame(updateFrames);
 }
 
 
