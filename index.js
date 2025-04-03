@@ -119,6 +119,8 @@ window.addEventListener('load', () => {
 
 
 	restartButton.addEventListener('click', () => {
+		gameOverPopup.classList.remove('popupOpen'); // Hide the popup
+		currentScoreSpan.innerText = 0;
 	    startGame(); // Restart the game
 	});
 
@@ -137,9 +139,8 @@ function startGame() {
     // Clear previous pipes
     pipeArray = [];
 
+    // reset the board
     updateBoard();
-
-    gameOverPopup.classList.remove('popupOpen'); // Hide the popup
 
 	// Clear any existing interval
     if (pipeGenerationInterval) {
@@ -165,6 +166,7 @@ function updateFrames() {
 		// make the bird fall down if collided
 		if (BIRD.y + BIRD.height > board.height - GROUND.height) {
 			gameOverPopup.classList.add('popupOpen');
+			currentScoreSpan.innerText = score;
 	        return;
    		}
 	}
