@@ -78,7 +78,7 @@ function adjustBoard() {
 	gravity = board.width * 0.0005;
 	jumpVelocity = -(board.width * 0.01);
 	pipeVelocity = -(board.width * 0.005);
-	pipeSpacing = BIRD.height * 3.3;
+	pipeSpacing = BIRD.height * 3.5;
 	pipeInterval = board.width; 
 
 	// set the pipe interval for smaller screen
