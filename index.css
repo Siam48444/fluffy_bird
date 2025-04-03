@@ -34,9 +34,8 @@
 	background-color: #ded995;
 	width: 30%;
 	aspect-ratio: 1;
-	border: solid #d1a354 0.4vmin;
-	border-radius: 1vmin;
-	padding: 2vmin;
+	padding: 3vmin;
+	position: relative;
 }
 
 .popupOpen {
@@ -46,5 +45,28 @@
 
 .scores {
 	display: grid;
-	grid-template-columns: 1fr 0.3fr 1fr
+	grid-template-columns: 1fr 0.1fr 1fr;
+	gap: 0.5em;
+}
+
+.scores span {
+	font-family: 'Inter';
+	font-size: clamp(0.8rem, 3vmin, 2rem);
+	font-weight: bold;
+	color: #000000;
+	display: flex;
+	align-items: center;
+
+	&:is(:nth-child(1), :nth-child(4)) {
+		text-align: right;
+		justify-content: right;
+	}
+	&:is(:nth-child(2), :nth-child(5)) {
+		text-align: center;
+		justify-content: center;
+	}
+	&:is(:nth-child(3), :nth-child(6)) {
+		text-align: left;
+		justify-content: left;
+	}
 }
