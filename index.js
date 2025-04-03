@@ -51,7 +51,7 @@ let pipeArray = []; // used to add more pipes in the game
 
 let gameOver = false; // keeps track if the game is over
 let score = 0; // keeps track of the player's score
-let highScore = localStorage.getItem('highScore'); // get the saved high score
+let highScore = localStorage.getItem('highScore') || 0; // get the saved high score
 
 
 
@@ -224,9 +224,11 @@ function placePipes(pipe) {
 	}
 
 	// detect if the pipe is crossed
-	if (pipe.x + pipe.width < BIRD.x && !pipe.passed) {
+	if (pipe.x + pipe.width < BIRD.x && !pipe.passed && !gameOver) {
 		pipe.passed = true
-		score += 0.5; // increment the score
+		score += 0.5; // increment the score (2 pipes * 0.5 scores = 1 score)
+		highScore = localStorage.getItem('highScore');
+		localStorage.setItem('highScore', highScore < score ? score : highScore);
 	}
 
 	// detect if the game is over
