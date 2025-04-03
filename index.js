@@ -60,7 +60,7 @@ function adjustBoard() {
 	}
 
 	// recalculate bird properties
-	BIRD.width = BIRD.height = board.width * 0.07;
+	BIRD.width = BIRD.height = board.width * 0.06;
 	BIRD.x = board.width / 5;
 	BIRD.y = (board.height / 2) - (BIRD.height * 0.5);
 
@@ -107,11 +107,12 @@ window.addEventListener('DOMContentLoaded', () => {
 function updateFrames() {
 	// stop the function if the game is over
 	if (gameOver) {
+		// move the bird according to the gravity
 		BIRD.y += birdVelocity;
 		birdVelocity += gravity;
 
 		// make the bird fall down if collided
-		if (BIRD.y + BIRD.height >= board.height - GROUND.height) {
+		if (BIRD.y + BIRD.height > board.height - GROUND.height) {
 	        return;
    		}
 	}
