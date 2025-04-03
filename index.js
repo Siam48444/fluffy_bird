@@ -44,7 +44,7 @@ let gameOver = false; // keeps track if the game is over
 let score = 0; // keeps track of the player's score
 let highScore = localStorage.getItem('highScore'); // get the saved high score
 
-const clrGameName = '#d1a354';
+const clrGameName = '#6c8a2b';
 
 
 // adjust the game board and the inner elements
@@ -108,15 +108,11 @@ function updateFrames() {
 	// stop the function if the game is over
 	if (gameOver) return;
 
-	// Clear previous frame
-	context.clearRect(0, 0, board.width, board.height); 
+	context.clearRect(0, 0, board.width, board.height); // Clear previous frame
 
-	// update the bird velocity using the gravity
-	BIRD.y += birdVelocity;
-	birdVelocity += gravity; 
+	updateBirdMovement(); // update the bird movement
 
-	// prevent the bird from going outside the screen
-	setBirdBoundary();
+	setBirdBoundary(); // prevent the bird from going outside the screen
 
 	//draw the bird according to the gravity
 	if (birdVelocity > 0) { 
@@ -139,6 +135,16 @@ function updateFrames() {
 
 	// loop the animation
 	requestAnimationFrame(updateFrames); 
+}
+
+
+// update the bird's movement and falling
+function updateBirdMovement() {
+	// update the bird velocity using the gravity
+	if (!gameOver) {
+		BIRD.y += birdVelocity;
+		birdVelocity += gravity; 
+	}
 }
 
 
