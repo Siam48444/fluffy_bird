@@ -42,7 +42,9 @@ let pipeArray = []; // used to add more pipes in the game
 
 let gameOver = false; // keeps track if the game is over
 let score = 0; // keeps track of the player's score
-let highScore = localStorage.getItem('highScore');
+let highScore = localStorage.getItem('highScore'); // get the saved high score
+
+const clrGameName = '#d1a354';
 
 
 // adjust the game board and the inner elements
@@ -126,40 +128,14 @@ function updateFrames() {
 
 	// draw the new pipes from the pipe array
 	for (let pipe of pipeArray) {
-		pipe.x += pipeVelocity; // move the pipes to the left
-		context.drawImage(pipe.image, pipe.x, pipe.y, pipe.width, pipe.height); // draw the pipes
-
-		// remove the old pipes that has already gone off the screen
-		if (pipe.x + pipe.width < -board.width) {
-			pipeArray.shift(pipe);
-		}
-
-		// detect if the pipe is crossed
-		if (pipe.x + pipe.width < BIRD.x && !pipe.passed) {
-			pipe.passed = true
-			score += 0.5; // increment the score
-		}
-
-		// detect if the game is over
-		if (detectCollision(BIRD, pipe)) {
-			gameOver = true;
-		}
+		placePipes(pipe);
 	}
 
 	// draw the ground
 	context.drawImage(groundImage, GROUND.x, GROUND.y, GROUND.width, GROUND.height);
 
-	// draw the score
-	context.fillStyle = 'black';
-	context.font = `800 ${board.width * 0.05}px Inter`;
-	context.textAlign = 'center';
-	context.fillText(score, board.width * 0.5, board.width * 0.1);
-	
-	// draw the game name in the bottom of the screen 
-	context.fillStyle = 'black';
-	context.font = 'Inter'; 
-	context.textAlign = 'center';
-	context.fillText('Fluffy Bird', board.width * 0.5, board.height - (GROUND.height * 0.3));
+	// add the text elements
+	addText();
 
 	// loop the animation
 	requestAnimationFrame(updateFrames); 
@@ -184,6 +160,29 @@ function setBirdBoundary() {
 
 
 // place the pipes
+function placePipes(pipe) {
+	pipe.x += pipeVelocity; // move the pipes to the left
+	context.drawImage(pipe.image, pipe.x, pipe.y, pipe.width, pipe.height); // draw the pipes
+
+	// remove the old pipes that has already gone off the screen
+	if (pipe.x + pipe.width < -board.width) {
+		pipeArray.shift(pipe);
+	}
+
+	// detect if the pipe is crossed
+	if (pipe.x + pipe.width < BIRD.x && !pipe.passed) {
+		pipe.passed = true
+		score += 0.5; // increment the score
+	}
+
+	// detect if the game is over
+	if (detectCollision(BIRD, pipe)) {
+		gameOver = true;
+	}
+}
+
+
+// generate the pipes
 function generatePipes() {
 	// stop the function if the game is over
 	if (gameOver) return;
@@ -215,7 +214,7 @@ function generatePipes() {
 }
 
 
-// make the bird jump on keypress
+// make the bird jump on key-press
 function jumpOnKeypress(e) {
 	if (gameOver) return;
 
@@ -235,12 +234,26 @@ function jumpOnKeypress(e) {
 // detect if the game is over (collision between bird and pipe)
 function detectCollision(bird, pipe) {
 	return (
-		// collision in the x axis
         bird.x + bird.width > pipe.x && 
 		bird.x < pipe.x + pipe.width && 
 
-		// collision in the y axis
         bird.y + bird.height > pipe.y &&
         bird.y < pipe.y + pipe.height 
 	);
+}
+
+
+// the scores and other texts
+function addText() {
+	// draw the score
+	context.fillStyle = 'black';
+	context.font = `800 ${board.width * 0.05}px Inter`;
+	context.textAlign = 'center';
+	context.fillText(score, board.width * 0.5, board.width * 0.1);
+	
+	// draw the game name in the bottom of the screen 
+	context.fillStyle = clrGameName;
+	context.font = `500 ${board.width * 0.03}px Inter`; 
+	context.textAlign = 'center';
+	context.fillText('Fluffy Bird', board.width * 0.5, board.height - (GROUND.height * 0.3));
 }
