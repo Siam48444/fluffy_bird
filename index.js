@@ -80,8 +80,7 @@ function updateBoard() {
     popup.style.width = `${board.width * 0.6}px`;
 
 	// recalculate bird properties
-	BIRD.width = board.width * 0.065;
-	BIRD.height = board.height * 0.055;
+	BIRD.width = BIRD.height = board.width * 0.065;
 	BIRD.x = board.width / 5;
 	BIRD.y = (board.height / 2) - (BIRD.height * 0.5);
 
@@ -104,9 +103,9 @@ function updateBoard() {
 	pipeInterval = board.width; 
 
 	// set the pipe interval for smaller screen
-	if (board.width < 777) { pipeInterval = board.width * 1.7; }
-	if (board.width < 444) { pipeInterval = board.width * 2.7; }
-	if (board.width < 333) { pipeInterval = board.width * 4.7; }
+	if (board.width < 777) { pipeInterval = board.width * 2; }
+	if (board.width < 444) { pipeInterval = board.width * 3.5; }
+	if (board.width < 333) { pipeInterval = board.width * 5; }
 }
 
 
