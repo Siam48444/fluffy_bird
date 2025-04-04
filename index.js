@@ -160,7 +160,7 @@ function updateFrames() {
 	if (gameOver) {
 		// move the bird according to the gravity
 		BIRD.y += birdVelocity;
-		birdVelocity += gravity;
+		birdVelocity += gravity * 7;
 
 		// make the bird fall down if collided
 		if (BIRD.y + BIRD.height > board.height - GROUND.height) {
