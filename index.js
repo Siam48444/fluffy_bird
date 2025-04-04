@@ -161,13 +161,13 @@ function updateFrames() {
 		// move the bird according to the gravity
 		BIRD.y += birdVelocity;
 		birdVelocity += gravity;
-		playSound(collideSound);
 
 		// make the bird fall down if collided
 		if (BIRD.y + BIRD.height > board.height - GROUND.height) {
 			gameOverPopup.classList.add('popupOpen');
 			currentScoreSpan.innerText = score;
 			highScoreSpan.innerText = highScore;
+			playSound(collideSound);
 	        return;
    		}
 	}
