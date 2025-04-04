@@ -161,6 +161,7 @@ function updateFrames() {
 		// move the bird according to the gravity
 		BIRD.y += birdVelocity;
 		birdVelocity += gravity;
+		playSound(collideSound);
 
 		// make the bird fall down if collided
 		if (BIRD.y + BIRD.height > board.height - GROUND.height) {
@@ -283,8 +284,6 @@ function generatePipes() {
 
 // detect if the game is over (collision between bird and pipe)
 function detectCollision(bird, pipe) {
-	playSound(collideSound);
-
 	return (
         bird.x + bird.width > pipe.x && 
 		bird.x < pipe.x + pipe.width && 
