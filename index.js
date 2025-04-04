@@ -51,7 +51,7 @@ let pipeArray = []; // used to add more pipes in the game
 
 let gameOver = false; // keeps track if the game is over
 let score = 0; // keeps track of the player's score
-let highScore; // get the saved high score
+let highScore = localStorage.getItem('highScore') || 0; // get the saved high score
 
 
 
@@ -92,7 +92,6 @@ function updateBoard() {
 	pipeVelocity = -(board.width * 0.005);
 	pipeSpacing = BIRD.height * 3.5;
 	pipeInterval = board.width; 
-	localStorage.setItem('highScore', highScoreSpan.innerText);
 
 	// set the pipe interval for smaller screen
 	if (board.width < 777) { pipeInterval = board.width * 1.7; }
@@ -162,7 +161,7 @@ function updateFrames() {
 		if (BIRD.y + BIRD.height > board.height - GROUND.height) {
 			gameOverPopup.classList.add('popupOpen');
 			currentScoreSpan.innerText = score;
-			highScoreSpan.innerText = localStorage.getItem('highScore');
+			highScoreSpan.innerText = highScore;
 	        return;
    		}
 	}
@@ -231,8 +230,11 @@ function placePipes(pipe) {
 	if (pipe.x + pipe.width < BIRD.x && !pipe.passed && !gameOver) {
 		pipe.passed = true
 		score += 0.5; // increment the score (2 pipes * 0.5 scores = 1 score)
-		highScore = localStorage.getItem('highScore');
-		localStorage.setItem('highScore', highScore < score ? score : highScore);
+		
+		if (score > highScore) {
+	        highScore = score;
+	        localStorage.setItem('highScore', highScore);
+    	}
 	}
 
 	// detect if the game is over
