@@ -1,5 +1,5 @@
 // sounds
-import { playSound, flapSound } from './assets/sounds/sounds.js'
+import { playSound, flapSound, collideSound } from './assets/sounds/sounds.js'
 
 
 // board
@@ -283,6 +283,8 @@ function generatePipes() {
 
 // detect if the game is over (collision between bird and pipe)
 function detectCollision(bird, pipe) {
+	playSound(collideSound);
+
 	return (
         bird.x + bird.width > pipe.x && 
 		bird.x < pipe.x + pipe.width && 
