@@ -133,7 +133,6 @@ function startGame() {
 
     gameOverPopup.classList.remove('popupOpen'); // Hide the popup
 	currentScoreSpan.innerText = 0;
-	restartButton.disabled = true;
 
     // reset the board
     updateBoard();
@@ -163,7 +162,6 @@ function updateFrames() {
 		if (BIRD.y + BIRD.height > board.height - GROUND.height) {
 			gameOverPopup.classList.add('popupOpen');
 			currentScoreSpan.innerText = score;
-			restartButton.disabled = false;
 			highScoreSpan.innerText = localStorage.getItem('highScore');
 	        return;
    		}
