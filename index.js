@@ -1,5 +1,5 @@
 // sounds
-const flapSound = new Audio('./assets/sounds/flap.mp3');
+import { flapSound } from './assets/sounds/sounds.js'
 
 
 // board
