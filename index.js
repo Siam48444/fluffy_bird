@@ -1,3 +1,6 @@
+import { flapSound } from './assets/sounds/sounds.js'
+
+
 // board
 const board = document.getElementById('board');
 const context = board.getContext('2d'); 
@@ -291,6 +294,7 @@ function detectCollision(bird, pipe) {
 //jump the bird
 function jump(e) {
 	if (gameOver) return;
+
 	if (
 		e.code === 'Space' ||
 		e.code === 'KeyW' ||
@@ -300,6 +304,8 @@ function jump(e) {
 	) {
 		birdVelocity = jumpVelocity; 
 	}
+
+	flapSound.play();
 }
 
 
