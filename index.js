@@ -72,7 +72,7 @@ function updateBoard() {
 	}
 
 	if (board.width < 500) {
-		board.width = minSize;
+		board.width = window.innerWidth;
 		board.height = window.innerHeight;
 	}
 
