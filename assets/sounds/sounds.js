@@ -1,0 +1,1 @@
+export const flapSound = new Audio('./assets/sounds/flap.mp3');
