@@ -16,8 +16,8 @@ window.addEventListener('resize', updateBoard);
 const BIRD = {};
 const birdUpImage = new Image(); 
 const birdDownImage = new Image(); 
-birdUpImage.src = './assets/images/bird1.png';
-birdDownImage.src = './assets/images/bird1.png';
+birdUpImage.src = './assets/images/bird.png';
+birdDownImage.src = './assets/images/bird.png';
 
 
 // pipes

@@ -18,6 +18,7 @@
 	background-color: #ffffff;
 	display: block;
 	background-color: var(--skyColor);
+	border: solid 0.2vmin black;
 }
 
 .gameOverPopup {
