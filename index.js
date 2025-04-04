@@ -71,6 +71,11 @@ function updateBoard() {
 		board.width = board.height = maxSize;
 	}
 
+	if (board.width < 500) {
+		board.width = minSize;
+		board.height = window.innerHeight;
+	}
+
 	// update the popup size and position
     popup.style.width = `${board.width * 0.6}px`;
 
