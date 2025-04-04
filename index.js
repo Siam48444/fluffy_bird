@@ -1,4 +1,5 @@
-import { flapSound } from './assets/sounds/sounds.js'
+// sounds
+const flapSound = new Audio('./assets/sounds/flap.mp3');
 
 
 // board
@@ -113,6 +114,7 @@ window.addEventListener('load', () => {
 	window.addEventListener('click', () => { 
 		if (!gameOver) {
 			birdVelocity = jumpVelocity;
+			flapSound.play();
 		}
 	}); 
 
