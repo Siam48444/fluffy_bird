@@ -92,7 +92,7 @@ function updateBoard() {
 	pipeVelocity = -(board.width * 0.005);
 	pipeSpacing = BIRD.height * 3.5;
 	pipeInterval = board.width; 
-	highScoreSpan.innerText = localStorage.getItem('highScore') || 0;
+	localStorage.setItem('highScore', highScoreSpan.innerText);
 
 	// set the pipe interval for smaller screen
 	if (board.width < 777) { pipeInterval = board.width * 1.7; }
