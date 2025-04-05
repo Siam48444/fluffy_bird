@@ -121,7 +121,7 @@ window.addEventListener("load", () => {
     });
 
     // start the game
-    startGame();
+    // startGame();
 });
 
 // start the game animations
@@ -284,9 +284,8 @@ function jump(e) {
 
     if (e.code === "Space" || e.code === "KeyW" || e.code === "ArrowUp" || e.code === "Enter" || e.code === "NumpadEnter") {
         birdVelocity = jumpVelocity;
+        playSound(flapSound);
     }
-
-    playSound(flapSound);
 }
 
 // the scores and other texts
