@@ -275,14 +275,25 @@ function generatePipes() {
 
 // detect if the game is over (collision between bird and pipe)
 function detectCollision(bird, pipe) {
-    return bird.x + bird.width > pipe.x && bird.x < pipe.x + pipe.width && bird.y + bird.height > pipe.y && bird.y < pipe.y + pipe.height;
+    return (
+        bird.x + bird.width > pipe.x && 
+        bird.x < pipe.x + pipe.width && 
+        bird.y + bird.height > pipe.y && 
+        bird.y < pipe.y + pipe.height
+    );
 }
 
 //jump the bird
 function jump(e) {
     if (gameOver) return;
 
-    if (e.code === "Space" || e.code === "KeyW" || e.code === "ArrowUp" || e.code === "Enter" || e.code === "NumpadEnter") {
+    if (
+        e.code === "Space" || 
+        e.code === "KeyW" || 
+        e.code === "ArrowUp" || 
+        e.code === "Enter" || 
+        e.code === "NumpadEnter"
+    ) {
         birdVelocity = jumpVelocity;
         playSound(flapSound);
     }
