@@ -80,7 +80,8 @@ function updateBoard() {
     popup.style.width = `${board.width * 0.6}px`;
 
 	// recalculate bird properties
-	BIRD.width = BIRD.height = board.width * 0.06;
+	BIRD.width = board.width * 0.06;
+	BIRD.height = BIRD.width * 0.85;
 	BIRD.x = board.width / 5;
 	BIRD.y = (board.height / 2) - (BIRD.height * 0.5);
 
