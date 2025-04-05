@@ -94,6 +94,12 @@ function updateBoard() {
     pipeVelocity = -(board.width * 0.005);
     pipeSpacing = BIRD.height * 4;
     pipeInterval = 1500;
+
+    if (board.width < 500) {
+        BIRD.width = board.width * 0.07;
+        BIRD.height = BIRD.width * 0.95;
+        pipeSpacing = BIRD.height * 5;
+    }
 }
 
 window.addEventListener("load", () => {
