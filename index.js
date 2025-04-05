@@ -100,7 +100,7 @@ function updateBoard() {
 	jumpVelocity = -(board.width * 0.01);
 	pipeVelocity = -(board.width * 0.005);
 	pipeSpacing = BIRD.height * 3.5;
-	pipeInterval = Math.max(board.width * 1.5, 1500);
+	pipeInterval = 1500;
 }
 
 
