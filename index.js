@@ -72,7 +72,7 @@ function updateBoard() {
     popup.style.width = `${board.width * 0.6}px`;
 
     // recalculate bird properties
-    BIRD.width = board.width * 0.06;
+    BIRD.width = board.width * 0.05;
     BIRD.height = BIRD.width * 0.85;
     BIRD.x = board.width / 5;
     BIRD.y = board.height / 2 - BIRD.height * 0.5;
@@ -92,7 +92,7 @@ function updateBoard() {
     gravity = board.width * 0.0005;
     jumpVelocity = -(board.width * 0.01);
     pipeVelocity = -(board.width * 0.005);
-    pipeSpacing = BIRD.height * 3.5;
+    pipeSpacing = BIRD.height * 4;
     pipeInterval = 1500;
 }
 
