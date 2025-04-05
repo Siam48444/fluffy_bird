@@ -121,7 +121,7 @@ window.addEventListener("load", () => {
     });
 
     // start the game
-    // startGame();
+    startGame();
 });
 
 // start the game animations
